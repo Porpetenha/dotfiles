@@ -1,0 +1,34 @@
+(defpoll calendar_day :interval "24h" "date '+%d'")
+(defpoll calendar_year :interval "24h" "date '+%Y'")
+(defpoll current-time :interval "1s" "date +'%H:%M:%S'")
+(defpoll weather-icon :interval "20s" "~/.config/eww/scripts/weather.sh --icon")
+(defpoll weather-temp :interval "20s" "~/.config/eww/scripts/weather.sh --temp")
+(defpoll weather-desc :interval "20s" "~/.config/eww/scripts/weather.sh --stat")
+(deflisten weather-color :initial "#7aa2f7" "~/.config/eww/scripts/weather.sh --hex")
+
+(defwidget cal []
+	(box :class "cal" :orientation "v"
+	(box :class "cal-in"
+	(calendar :class "cal" 
+			  :day calendar_day 
+			  :year calendar_year)
+		)
+	)
+)
+
+(defwidget minha-box []
+	(box :class "minha-box" :orientation "v" :spacing 10 :halign "center" :valign "center" :space-evenly false
+		(box :class "wheater" :orientation "v" :spacing 10 :halign "center" :valign "center" :space-evenly false
+			(label :class "weather-desc" :halign "start" :text weather-desc)
+            (label :class "weather-temp" :halign "start" :text weather-temp)
+            (label :class "weather-icon" :halign "end" :valign "end" :text weather-icon :style "color: ${weather-color}"))
+		(box :class "clock" :orientation "v" :halign "center" :valign "center"
+			(label :text current-time))
+    	(cal)
+		)
+)
+
+(defwindow calendar
+	:geometry (geometry :x "5px" :y "0.5%" :anchor "top right" :width "270px" :height "60px")
+	:monitor 0
+  	(minha-box))

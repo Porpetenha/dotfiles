@@ -60,22 +60,24 @@
     "clock": {
         "timezone": "America/Sao_Paulo",
         "format": "{:%H:%M} 󰥔",
-        "tooltip-format": "<tt>{calendar}</tt>",
-        "calendar": {
-            "mode": "year",
-            "mode-mon-col"  : 3,
-            "on-scroll": 1,
-            "format": {
-                "months":     "<span color='#94e2d5'><b>{}</b></span>",
-                "days":       "<span color='#cdd6f4'><b>{}</b></span>",
-                "today":      "<span color='#f38ba8'><b><u>{}</u></b></span>"                
-            }
-        },
-        "actions": {                    
-            "on-click": "shift_reset",
-            "on-scroll-up": "shift_up",
-            "on-scroll-down": "shift_down"      
-        }
+        "tooltip": false,
+        "on-click": "eww c calendar || eww o calendar"
+        //"tooltip-format": "<tt>{calendar}</tt>",
+        // "calendar": {
+        //     "mode": "year",
+        //     "mode-mon-col"  : 3,
+        //     "on-scroll": 1,
+        //     "format": {
+        //         "months":     "<span color='#94e2d5'><b>{}</b></span>",
+        //         "days":       "<span color='#cdd6f4'><b>{}</b></span>",
+        //         "today":      "<span color='#f38ba8'><b><u>{}</u></b></span>"                
+        //     }
+        // },
+        // "actions": {                    
+        //     "on-click": "shift_reset",
+        //     "on-scroll-up": "shift_up",
+        //     "on-scroll-down": "shift_down"      
+        // }
     },
 
     "pulseaudio": {
@@ -123,7 +125,7 @@
 
         "custom/file": {
         "format": "",
-        "on-click": "thunar",
+        "on-click": "nautilus",
         "tooltip": true,
         "tooltip-format": "Gerenciador de arquivos"
     },

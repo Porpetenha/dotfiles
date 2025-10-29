@@ -1,0 +1,72 @@
+// -*- mode: jsonc -*-
+{
+    "layer": "top", // Waybar at top layer
+    //"position": "bottom", // Waybar position (top|bottom|left|right)
+    "height": 10, // Waybar height (to be removed for auto height)
+    "width": 1890, // Waybar width
+    "margin": 4,
+    //"spacing": 4, // Gaps between modules (4px)
+    
+    // Choose the order of the modules
+
+    "modules-left": [ 
+        "hyprland/workspaces"
+    ],
+
+    "modules-center": [ 
+        "clock"
+    ],
+
+    "modules-right": [
+        //"tray",
+        "custom/notify",
+        "custom/os_button"
+    ],
+
+    "custom/os_button": {
+        "format":"󰣇",
+        "on-click": "eww c menu || eww o menu",
+        "on-click-right": "rofi -show drun",
+        "tooltip": true,
+        "tooltip-format": "btw 😎"
+
+    },
+
+    "hyprland/workspaces": {
+        "format": "{icon}",
+    	"on-scroll-up": "hyprctl dispatch workspace e+1",
+    	"on-scroll-down": "hyprctl dispatch workspace e-1",
+		"persistent-workspaces": {
+		"*":5
+		},
+         "format-icons": {
+            "1": "一",
+            "2": "二",
+            "3": "三",
+            "4": "四",
+            "5": "五"
+        }
+    },
+
+    "tray": {
+        // "icon-size": 21,
+        "spacing": 10
+    },
+
+    "clock": {
+        "timezone": "America/Sao_Paulo",
+        "format": "{:%H:%M} 󰥔",
+        "tooltip": false,
+        "on-click": "eww c calendar || eww o calendar"
+    },
+
+    "custom/notify": { 
+        "format": "󰂚",
+        "on-click": "",
+        "tooltip": "true",
+        "tooltip-format": "Nodificações"
+    }
+
+}
+
+

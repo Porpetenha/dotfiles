@@ -1,34 +1,79 @@
 (defpoll calendar_day :interval "24h" "date '+%d'")
 (defpoll calendar_year :interval "24h" "date '+%Y'")
+
 (defpoll current-time :interval "1s" "date +'%H:%M:%S'")
-(defpoll weather-icon :interval "20s" "~/.config/eww/scripts/weather.sh --icon")
-(defpoll weather-temp :interval "20s" "~/.config/eww/scripts/weather.sh --temp")
-(defpoll weather-desc :interval "20s" "~/.config/eww/scripts/weather.sh --stat")
+(defpoll full_date :interval "24h" "date '+%A | %d de %b, %Y' | awk '{print toupper(substr($0,1,1)) substr($0,2)}'")
+
+(defpoll weather-icon :interval "2m" "~/.config/eww/scripts/weather.sh --icon")
+(defpoll weather-temp :interval "2m" "~/.config/eww/scripts/weather.sh --temp")
+(defpoll weather-desc :interval "2m" "~/.config/eww/scripts/weather.sh --stat")
 (deflisten weather-color :initial "#7aa2f7" "~/.config/eww/scripts/weather.sh --hex")
+
+(defpoll system-uptime :interval "1m" "echo 'Up: '$(uptime -p | sed 's/up //; s/hours*/h/; s/minutes*/min/; s/, */, /g')")
+
+(defpoll volume-icon :interval "1s" "~/.config/eww/scripts/volume.sh icon")
+(defpoll volume :interval "1s" "~/.config/eww/scripts/volume.sh percentage")
+(defpoll volume-value :interval "1s" "~/.config/eww/scripts/volume.sh vol")
+(defpoll is-muted :interval "1s" "~/.config/eww/scripts/volume.sh muted")
+
+(defpoll br-icon :interval "1s" "~/.config/eww/scripts/brightness.sh icon")
+(defpoll br :interval "1s" "~/.config/eww/scripts/brightness.sh br")
 
 (defwidget cal []
 	(box :class "cal" :orientation "v"
 	(box :class "cal-in"
-	(calendar :class "cal" 
-			  :day calendar_day 
-			  :year calendar_year)
-		)
-	)
-)
+		(calendar :class "cal" :day calendar_day :year calendar_year))))
 
 (defwidget minha-box []
 	(box :class "minha-box" :orientation "v" :spacing 10 :halign "center" :valign "center" :space-evenly false
-		(box :class "wheater" :orientation "v" :spacing 10 :halign "center" :valign "center" :space-evenly false
-			(label :class "weather-desc" :halign "start" :text weather-desc)
-            (label :class "weather-temp" :halign "start" :text weather-temp)
-            (label :class "weather-icon" :halign "end" :valign "end" :text weather-icon :style "color: ${weather-color}"))
-		(box :class "clock" :orientation "v" :halign "center" :valign "center"
-			(label :text current-time))
-    	(cal)
-		)
-)
+		(label :class "clock" :text current-time)
+		(label :class "date" :text full_date)	
+		(cal)
+		(box :class "weather" :orientation "h" :spacing 40 :halign "center" :valign "center" :space-evenly false
+			(box :orientation "v" :halign "center" :valign "center"
+				(label :class "weather-desc" :text weather-desc)
+        	    (label :class "weather-temp" :text weather-temp))
+        	(label :class "weather-icon" :text weather-icon :style "color: ${weather-color}"))))
 
 (defwindow calendar
 	:geometry (geometry :x "5px" :y "0.5%" :anchor "top right" :width "270px" :height "60px")
 	:monitor 0
   	(minha-box))
+
+(defwidget panel []
+	(box :class "main-panel" :orientation "v"
+		(box :class "box" :orientation "h"
+			(image :class "profile-pic" :path "/home/porpetenha/dotfiles/.face.jpg" :image-width 96)
+			(label :class "username" :text "Porpetenha"))
+		(box :class "box" :orientation "v" :halign "fill"
+				(label :class "uptime" :halign "start" :text system-uptime :halign "center"))
+		(box :class "box":orientation "h"
+			(eventbox :class "shutdown" :cursor "pointer" :onclick "systemctl poweroff" :tooltip "Desligar" (label :text "⏻"))
+			(eventbox :class "reboot" :cursor "pointer" :onclick "systemctl reboot" :tooltip "Reiniciar" (label :text ""))
+			(eventbox :class "lock" :cursor "pointer" :onclick "hyprlock" :tooltip "Bloquear" (label :text ""))
+			(eventbox :class "suspend" :cursor "pointer" :onclick "hyprlock & sleep 2 && systemctl suspend" :tooltip "Suspender" (label :text ""))
+			(eventbox :class "exit" :cursor "pointer" :onclick "hyprctl dispatch exit" :tooltip "Sair" (label :text "󰍃")))
+		(box :class "box" :orientation "v"
+			(box :orientation "h"
+				(label :class "vol-label" :text volume-icon )
+				(scale :value volume-value :onchange "~/.config/eww/scripts/volume.sh set {}" :min 0 :max 101))
+			(box :orientation "h"
+				(label :class "br-label" :text br-icon)
+				(scale :value br :onchange "~/.config/eww/scripts/brightness.sh set {}" :min 0 :max 101)))
+			))
+
+
+(defwindow menu
+	:geometry (geometry :x "5px" :y "0.5%" :anchor "top right" :width "270px" :height "60px")
+	:monitor 0
+	:stacking "fg"
+  	(panel))
+
+(defwidget closer []
+    (eventbox :onclick "eww close-all"))
+  
+(defwindow background-closer
+  :monitor 0
+  :geometry (geometry :width "100%" :height "100%")
+  :stacking "fg"
+  (closer))

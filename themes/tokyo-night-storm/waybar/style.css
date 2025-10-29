@@ -1,0 +1,146 @@
+/* @import "/home/porpetenha/dotfiles/themes/tokyo-night-storm/waybar/tokyo.css" */
+@import "/home/porpetenha/dotfiles/themes/tokyo-night-storm/waybar/tokyo.css";
+
+@define-color background @base;
+
+* {
+    /* `otf-font-awesome` is required to be installed for icons */
+    font-family: JetBrainsMono Nerd Font Propo, Roboto, Helvetica, Arial, sans-serif;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+window#waybar {
+    background: transparent;
+    color: red;
+    transition-property: background-color;
+    transition-duration: .5s;
+}
+
+window#waybar.hidden {
+    opacity: 0.2;
+}
+
+#custom-os_button {
+    background-color: @background;
+    color: @blue;
+    padding: 0 12px;
+    border: 2px solid @blue;
+    border-radius: 9px;
+    margin-left: 5px;
+    transition: box-shadow 0.3s ease; 
+}
+
+#custom-notify {
+    background-color: @background;
+    color: @yellow;
+    padding: 0 12px;
+    border: 2px solid @yellow;
+    border-radius: 9px;
+    margin-right: 5px;
+    transition: box-shadow 0.3s ease;
+}
+
+#clock {
+    background-color: @background;
+    color: @green;
+    padding: 0 10px;
+    padding: 0 12px;
+    border: 2px solid @green;
+    border-radius: 9px;
+    transition: box-shadow 0.3s ease;
+}
+
+#workspaces {
+    background-color: @background;
+    padding: 0 10px;
+    border: 2px solid @red;
+    border-radius: 9px;
+}
+
+#workspaces button.persistent {
+    color: @orange;
+}
+
+#workspaces button.empty {
+    color: @white;
+}
+
+#workspaces button.active {
+    color: @red;
+}
+
+#workspaces button.urgent {
+    color: @red;
+}
+
+
+/* If workspaces is the leftmost module, omit left margin */
+.modules-left > widget:first-child > #workspaces {
+    margin-left: 0;
+}
+
+/* If workspaces is the rightmost module, omit right margin */
+.modules-right > widget:last-child > #workspaces {
+    margin-right: 0;
+}
+
+@keyframes blink {
+    to {
+        background-color: #ffffff;
+        color: #222000;
+    }
+}
+
+/* Hover effects */
+
+
+#clock:hover {
+    box-shadow: inset 0 0 10px 2px rgba(158, 206, 106, 0.4);
+}
+#custom-notify:hover {
+    box-shadow: inset 0 0 10px 2px rgba(224, 175, 104, 0.4);
+}
+
+#custom-os_button:hover {
+    box-shadow: inset 0 0 10px 2px rgba(122, 162, 247, 0.4)
+}
+
+tooltip {
+    color: @text;
+    background-color: @surface0;
+    text-shadow: none;
+    border-radius: 5px;
+    border: 2px solid @border;
+}
+
+/* #workspaces button {
+  box-shadow: none;
+  text-shadow: none;
+  padding: 0px;
+  border-radius: 13px;
+  border-color: #A020FF;
+  margin-top: 3px;
+  margin-bottom: 3px;
+
+  color: #f1f1f1;
+  animation: gradient_f 20s ease-in infinite;
+  transition: all 0.5s cubic-bezier(0.55, -0.68, 0.48, 1.682);
+}
+
+#workspaces button.active {
+  background: #4F2799;
+  color: #ffffff;
+  border-radius: 13px;
+  border-color: #A020FF;
+  border-radius: 18px 18px 18px 18px;
+  animation: gradient_f 20s ease-in infinite;
+  transition: all 0.3s cubic-bezier(0.55, -0.68, 0.48, 1.682);
+}
+
+#workspaces button:hover {
+  background: #d0ddd6;
+  color: #313244;
+  animation: gradient_f 20s ease-in infinite;
+  transition: all 0.3s cubic-bezier(0.55, -0.68, 0.48, 1.682);
+} */

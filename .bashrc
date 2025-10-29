@@ -14,3 +14,5 @@ eval "$(starship init bash)"
 alias update='sudo pacman -Syu'
 alias remove='sudo pacman -Rns'
 alias dotpush='cd dotfiles/ && git add . && git commit -m "modified" && git push'
+
+alias ts='bash dotfiles/theme-switcher.sh'

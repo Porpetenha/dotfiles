@@ -21,13 +21,16 @@ THEMES_DIR="$DOTFILES_DIR/themes"
 THEME_NAMES=(
     "Catppuccin Mocha"
     "Tokyo Night Storm"
+    "Gruvbox Dark"
     # Adicione novos nomes de exibição aqui.
 )
 
 declare -A THEMES=(
     ["Catppuccin Mocha"]="catppuccin-mocha"
     ["Tokyo Night Storm"]="tokyo-night-storm"
-    # Adicione novos mapeamentos aqui.
+    ["Gruvbox Dark"]="gruvbox-dark"
+    # 
+    #Adicione novos mapeamentos aqui.
 )
 
 
@@ -77,7 +80,13 @@ run_theme_commands() {
             
             # Adicione outros comandos do Tokyo Night aqui
             ;;
-
+        
+        "gruvbox-dark")
+            echo "  > Executando 'sed' para VS Code (Gruvbox)..."
+            sed -i 's/"workbench.colorTheme":.*/"workbench.colorTheme": "Gruvbox Dark Medium",/' "$HOME/.config/Code/User/settings.json"
+            
+            # Adicione outros comandos do Gruvbox aqui
+            ;;
         *)
             # Este 'case' é para o caso de um tema não ter comandos
             echo "  [Info] Nenhum comando específico para este tema."

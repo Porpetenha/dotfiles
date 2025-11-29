@@ -10,8 +10,9 @@ DOTFILES=(
     ["rofi"]="$CONFIG_DIR/rofi"
     ["kitty"]="$CONFIG_DIR/kitty"
     ["dunst"]="$CONFIG_DIR/dunst"
-    ["btop"]="$CONFIG_DIR/btop"
     ["fastfetch"]="$CONFIG_DIR/fastfetch"
+    ["eww"]="$CONFIG_DIR/eww"
+    ["swaync"]="$CONFIG_DIR/swaync"
 )
 
 declare -A HOME_FILES

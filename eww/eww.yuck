@@ -36,7 +36,7 @@
         	(label :class "weather-icon" :text weather-icon :style "color: ${weather-color}"))))
 
 (defwindow calendar
-	:geometry (geometry :x "5px" :y "0.5%" :anchor "center" :width "270px" :height "60px")
+	:geometry (geometry :x "5px" :y "0.5%" :anchor "top center" :width "270px" :height "60px")
 	:monitor 0
   	(minha-box))
 

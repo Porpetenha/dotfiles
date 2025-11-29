@@ -29,7 +29,6 @@ declare -A THEMES=(
     ["Catppuccin Mocha"]="catppuccin-mocha"
     ["Tokyo Night Storm"]="tokyo-night-storm"
     ["Gruvbox Dark"]="gruvbox-dark"
-    # 
     #Adicione novos mapeamentos aqui.
 )
 
@@ -39,7 +38,7 @@ declare -A APP_TARGETS=(
     ["kitty"]="colors.conf"
     ["hypr"]="look-and-feel.conf hyprlock.conf"
     ["waybar"]="style.css config.jsonc"
-    # ["rofi"]="theme.rasi"
+    ["rofi"]="colors.rasi"
 )
 
 # 4. DEFINIÇÃO DE ALVOS "ROOT" (FORA DO DOTFILES_DIR)
@@ -71,13 +70,31 @@ run_theme_commands() {
             echo "  > Executando 'sed' para VS Code (Catppuccin)..."
             sed -i 's/"workbench.colorTheme":.*/"workbench.colorTheme": "Catppuccin Mocha",/' "$HOME/.config/Code/User/settings.json"
             
+            echo "  > Aplicando wallpaper do Catppuccin..."
+            sed -i "s#^\(preload = \).*#\1$HOME/dotfiles/themes/catppuccin-mocha/catppuccin-tree.jpg#" "$HOME/dotfiles/hypr/hyprpaper.conf"
+            sed -i "s#^\(wallpaper = , \).*#\1$HOME/dotfiles/themes/catppuccin-mocha/catppuccin-tree.jpg#" "$HOME/dotfiles/hypr/hyprpaper.conf"
+
+            echo "  > Executando 'sed' para o Obsidian (Catppuccin)..."
+            find "$HOME" -type f -path "*/.obsidian/appearance.json" 2>/dev/null | while read -r obsidian_config; do
+                sed -i 's/"cssTheme":.*/"cssTheme": "Catppuccin"/' "$obsidian_config"
+                echo "    - Atualizado: $obsidian_config"
+            done
             # Adicione outros comandos do Catppuccin aqui
             ;;
 
         "tokyo-night-storm")
             echo "  > Executando 'sed' para VS Code (Tokyo Night)..."
             sed -i 's/"workbench.colorTheme":.*/"workbench.colorTheme": "Tokyo Night Storm",/' "$HOME/.config/Code/User/settings.json"
-            
+
+            echo "  > Aplicando wallpaper do Tokyo Night..."
+            sed -i "s#^\(preload = \).*#\1$HOME/dotfiles/themes/tokyo-night-storm/tokyo-kanagawa.jpg#" "$HOME/dotfiles/hypr/hyprpaper.conf"
+            sed -i "s#^\(wallpaper = , \).*#\1$HOME/dotfiles/themes/tokyo-night-storm/tokyo-kanagawa.jpg#" "$HOME/dotfiles/hypr/hyprpaper.conf"
+
+            echo "  > Executando 'sed' para o Obsidian (Tokyo Night)..."
+            find "$HOME" -type f -path "*/.obsidian/appearance.json" 2>/dev/null | while read -r obsidian_config; do
+                sed -i 's/"cssTheme":.*/"cssTheme": "Tokyo Night"/' "$obsidian_config"
+                echo "    - Atualizado: $obsidian_config"
+            done    
             # Adicione outros comandos do Tokyo Night aqui
             ;;
         
@@ -85,6 +102,15 @@ run_theme_commands() {
             echo "  > Executando 'sed' para VS Code (Gruvbox)..."
             sed -i 's/"workbench.colorTheme":.*/"workbench.colorTheme": "Gruvbox Dark Medium",/' "$HOME/.config/Code/User/settings.json"
             
+            echo "  > Aplicando wallpaper do Gruvbox..."
+            sed -i "s#^\(preload = \).*#\1$HOME/dotfiles/themes/gruvbox-dark/gruvbox_astro.jpg#" "$HOME/dotfiles/hypr/hyprpaper.conf"
+            sed -i "s#^\(wallpaper = , \).*#\1$HOME/dotfiles/themes/gruvbox-dark/gruvbox_astro.jpg#" "$HOME/dotfiles/hypr/hyprpaper.conf"
+
+            echo "  > Executando 'sed' para o Obsidian (Gruvbox)..."
+            find "$HOME" -type f -path "*/.obsidian/appearance.json" 2>/dev/null | while read -r obsidian_config; do
+                sed -i 's/"cssTheme":.*/"cssTheme": "Obsidian gruvbox"/' "$obsidian_config"
+                echo "    - Atualizado: $obsidian_config"
+            done
             # Adicione outros comandos do Gruvbox aqui
             ;;
         *)
@@ -161,6 +187,7 @@ reload_services() {
     # 1. Mata o waybar. O '|| true' garante que o script
     #    não pare se o waybar não estiver rodando.
     (killall waybar || true) &>/dev/null
+    (killall hyprpaper || true) &>/dev/null
     
     # 2. Espera um instante para o processo morrer
     sleep 0.2
@@ -170,7 +197,7 @@ reload_services() {
     #    '>/dev/null 2>&1' descarta toda a saída (logs).
     #    '&' coloca em background.
     (nohup waybar >/dev/null 2>&1 &)
-      
+    (nohup hyprpaper >/dev/null 2>&1 &)
     
     echo "Serviços recarregados."
 }

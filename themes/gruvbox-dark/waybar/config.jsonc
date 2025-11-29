@@ -1,10 +1,10 @@
 // -*- mode: jsonc -*-
 {
     "layer": "top", // Waybar at top layer
-    //"position": "bottom", // Waybar position (top|bottom|left|right)
-    "height": 10, // Waybar height (to be removed for auto height)
-    "width": 1890, // Waybar width
-    "margin": 4,
+    "position": "top", // Waybar position (top|bottom|left|right)
+    "height": 0, // Waybar height (to be removed for auto height)
+    "width": 1920, // Waybar width
+    "margin": 0,
     //"spacing": 4, // Gaps between modules (4px)
     
     // Choose the order of the modules
@@ -19,7 +19,7 @@
 
     "modules-right": [
         //"tray",
-        "custom/notify",
+        //"custom/notify",
         "custom/os_button"
     ],
 
@@ -27,7 +27,7 @@
         "format":"󰣇",
         "on-click": "eww c menu || eww o menu",
         "on-click-right": "rofi -show drun",
-        "tooltip": true,
+        "tooltip": false,
         "tooltip-format": "btw 😎"
 
     },
@@ -38,14 +38,7 @@
     	"on-scroll-down": "hyprctl dispatch workspace e-1",
 		"persistent-workspaces": {
 		"*":5
-		},
-         "format-icons": {
-            "1": "一",
-            "2": "二",
-            "3": "三",
-            "4": "四",
-            "5": "五"
-        }
+		}
     },
 
     "tray": {

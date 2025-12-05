@@ -36,9 +36,10 @@ declare -A THEMES=(
 # 3. DEFINIÇÃO DOS ALVOS (APLICATIVOS DENTRO DE DOTFILES)
 declare -A APP_TARGETS=(
     ["kitty"]="colors.conf"
-    ["hypr"]="look-and-feel.conf hyprlock.conf"
+    ["hypr"]="look-and-feel.conf hyprlock.conf themes.conf"
     ["waybar"]="style.css config.jsonc"
     ["rofi"]="colors.rasi"
+    ["swaync"]="style.css config.json"
 )
 
 # 4. DEFINIÇÃO DE ALVOS "ROOT" (FORA DO DOTFILES_DIR)
@@ -83,6 +84,7 @@ run_theme_commands() {
             ;;
 
         "tokyo-night-storm")
+            notify-send -i ~/dotfiles/themes/tokyo-night-storm/icon.svg "Alterando o tema" "Tokyo-Night Storm"
             echo "  > Executando 'sed' para VS Code (Tokyo Night)..."
             sed -i 's/"workbench.colorTheme":.*/"workbench.colorTheme": "Tokyo Night Storm",/' "$HOME/.config/Code/User/settings.json"
 
@@ -95,10 +97,18 @@ run_theme_commands() {
                 sed -i 's/"cssTheme":.*/"cssTheme": "Tokyo Night"/' "$obsidian_config"
                 echo "    - Atualizado: $obsidian_config"
             done    
+
+            echo " > Alterando o tema do sistema..."
+            gsettings set org.gnome.desktop.interface gtk-theme "Tokyonight-Dark-Storm"
+            gsettings set org.gnome.desktop.interface cursor-theme "Future-cyan-cursors"
+            gsettings set org.gnome.desktop.interface icon-theme "Papirus-Dark"
+            nohup papirus-folders -C red --theme Papirus-Dark >/dev/null 2>&1 &
+            hyprctl setcursor Future-cyan-cursors 24
             # Adicione outros comandos do Tokyo Night aqui
             ;;
         
         "gruvbox-dark")
+           #notify-send -i ~/dotfiles/themes/tokyo-night-storm/icon.svg "Alterando o tema" "Tokyo-Night Storm"
             echo "  > Executando 'sed' para VS Code (Gruvbox)..."
             sed -i 's/"workbench.colorTheme":.*/"workbench.colorTheme": "Gruvbox Dark Medium",/' "$HOME/.config/Code/User/settings.json"
             
@@ -111,6 +121,14 @@ run_theme_commands() {
                 sed -i 's/"cssTheme":.*/"cssTheme": "Obsidian gruvbox"/' "$obsidian_config"
                 echo "    - Atualizado: $obsidian_config"
             done
+            
+            echo " > Alterando o tema do sistema..."
+            gsettings set org.gnome.desktop.interface gtk-theme "Gruvbox-Dark-Medium"
+            gsettings set org.gnome.desktop.interface cursor-theme "Future-cursors"
+            gsettings set org.gnome.desktop.interface icon-theme "Papirus-Dark"
+            nohup papirus-folders -C brown --theme Papirus-Dark >/dev/null 2>&1 &
+            hyprctl setcursor Future-cursors 24
+            
             # Adicione outros comandos do Gruvbox aqui
             ;;
         *)
@@ -188,7 +206,7 @@ reload_services() {
     #    não pare se o waybar não estiver rodando.
     (killall waybar || true) &>/dev/null
     (killall hyprpaper || true) &>/dev/null
-    
+    (killall swaync || true) &>/dev/null
     # 2. Espera um instante para o processo morrer
     sleep 0.2
     
@@ -198,6 +216,7 @@ reload_services() {
     #    '&' coloca em background.
     (nohup waybar >/dev/null 2>&1 &)
     (nohup hyprpaper >/dev/null 2>&1 &)
+    (nohup swaync >/dev/null 2>&1 &)
     
     echo "Serviços recarregados."
 }

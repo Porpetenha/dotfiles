@@ -1,3 +1,5 @@
+@theme "config.rasi"
+
 /*****----- Configuration -----*****/
 configuration {
 	modi:                       "drun";
@@ -5,16 +7,6 @@ configuration {
     display-drun:               "";
 	drun-display-format:        "{name}";
     font: "JetBrainsMono Nerd Font Propo 13";
-}
-
-/*****----- Global Properties -----*****/
-* {
-    background:     #1E1D2FFF;
-    background-alt: #282839FF;
-    foreground:     #D9E0EEFF;
-    selected:       #7AA2F7FF;
-    active:         #ABE9B3FF;
-    urgent:         #F28FADFF;
 }
 
 /*****----- Main Window -----*****/

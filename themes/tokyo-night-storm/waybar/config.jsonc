@@ -62,9 +62,9 @@
 
     "custom/notify": { 
         "format": "󰂚",
-        "on-click": "",
+        "on-click": "exec swaync-client -t -sw",
         "tooltip": "true",
-        "tooltip-format": "Nodificações"
+        "tooltip-format": "Notificações"
     }
 
 }

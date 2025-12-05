@@ -19,7 +19,7 @@
 
     "modules-right": [
         //"tray",
-        //"custom/notify",
+        "custom/notify",
         "custom/os_button"
     ],
 
@@ -55,9 +55,9 @@
 
     "custom/notify": { 
         "format": "󰂚",
-        "on-click": "",
-        "tooltip": "true",
-        "tooltip-format": "Nodificações"
+        "on-click": "exec swaync-client -t -sw",
+        "tooltip": false,
+        "tooltip-format": "Notificações"
     }
 
 }

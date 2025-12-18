@@ -1,37 +1,91 @@
 # 🌌 My Dotfiles | Hyprland + Wayland Configs
 
-![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)
-![Arch Linux](https://img.shields.io/badge/OS-Arch%20Linux-blue?logo=arch-linux)
-![Hyprland](https://img.shields.io/badge/WM-Hyprland-brightgreen)
-![Shell](https://img.shields.io/badge/Shell-Bash-orange?logo=gnu-bash)
+Bem-vindo ao meu repositório de dotfiles! Este setup foi construído para oferecer uma experiência visual minimalista, moderna e altamente produtiva, utilizando o Hyprland sobre o protocolo Wayland.
 
-Este repositório contém as minhas configurações pessoais para o **Hyprland**, focadas numa estética minimalista, funcionalidade avançada e um sistema dinâmico de troca de temas.
+## 🎨 Temas Dinâmicos
 
----
+O grande destaque deste sistema é a sua versatilidade. Através do script `theme-switcher.sh`, podes alternar globalmente entre diferentes estéticas que modificam o terminal, a barra e as janelas:
 
-## 🎨 Temas Incluídos
-O meu setup utiliza um script personalizado (`theme-switcher.sh`) para alternar instantaneamente entre esquemas de cores:
+- **Catppuccin Mocha** 🌿: Tons pastel suaves para uma experiência relaxante.
+- **Gruvbox Dark** 🪵: O equilíbrio perfeito entre o retro e o conforto visual.
+- **Tokyo Night Storm** ⚡: Estética vibrante inspirada nas noites tecnológicas de Tóquio.
 
-* **Catppuccin Mocha**: Tons pastel suaves e modernos.
-* **Gruvbox Dark**: O clássico visual retro e reconfortante.
-* **Tokyo Night Storm**: Um tema escuro vibrante inspirado nas luzes de Tóquio.
+## 🛠️ Componentes do Sistema
 
-## 🛠️ Software & Componentes
-| Componente | Ferramenta Utilizada |
-| :--- | :--- |
-| **Window Manager** | [Hyprland](https://hyprland.org/) |
-| **Barra de Status** | [Waybar](https://github.com/Alexays/Waybar) |
-| **Terminal** | [Kitty](https://sw.kovidgoyal.net/kitty/) |
-| **Lançador** | [Rofi](https://github.com/davatorium/rofi) |
-| **Notificações** | [SwayNC](https://github.com/ErikReider/SwayNotificationCenter) / [Dunst](https://github.com/dunst-project/dunst) |
-| **Widgets** | [Eww](https://github.com/elkowar/eww) (Volume, Brilho, Clima) |
-| **Prompt** | [Starship](https://starship.rs/) |
+| Componente        | Ferramenta                     |
+|-------------------|--------------------------------|
+| Window Manager    | Hyprland                       |
+| Barra de Status   | Waybar (Personalizada por tema)|
+| Terminal          | Kitty                          |
+| Lançador de Apps  | Rofi-Wayland                   |
+| Notificações      | SwayNC / Dunst                 |
+| Widgets           | Eww (Volume, Brilho, Clima, Uptime) |
+| Shell Prompt      | Starship                       |
+| Gestão de Energia | Hypridle & Hyprlock            |
 
----
+## 🚀 Instalação
 
-## 🚀 Como Instalar
+Siga os passos abaixo para replicar este ambiente no seu sistema:
 
 ### 1. Clonar o Repositório
+
 ```bash
-git clone [https://github.com/teu-utilizador/dotfiles.git](https://github.com/teu-utilizador/dotfiles.git) ~/dotfiles
+git clone https://github.com/seu-usuario/dotfiles.git ~/dotfiles
 cd ~/dotfiles
+```
+
+### 2. Executar o Script de Instalação
+
+O repositório contém um script que automatiza a criação de links simbólicos (symlinks) e a organização das pastas de configuração:
+
+```bash
+chmod +x install_dotfiles.sh
+./install_dotfiles.sh
+```
+
+### 3. Alternar entre Temas
+
+Para trocar o visual do sistema a qualquer momento, basta rodar o alternador:
+
+```bash
+chmod +x theme-switcher.sh
+./theme-switcher.sh
+```
+
+## ⌨️ Atalhos Principais (Keybinds)
+
+Baseado no ficheiro `hyprland.conf`, aqui estão os comandos essenciais:
+
+- `SUPER + Q`: Abrir o Terminal (Kitty)
+- `SUPER + C`: Fechar a Janela Ativa
+- `SUPER + R`: Abrir o Menu de Aplicações (Rofi)
+- `SUPER + M`: Encerrar a sessão do Hyprland
+- `SUPER + V`: Abrir o Gestor de Clipboard
+- `SUPER + L`: Bloquear o Ecrã (Hyprlock)
+
+## 📂 Estrutura do Repositório
+
+- `hypr/`: Lógica principal do WM, animações e regras de janelas.
+- `waybar/`: Estilos CSS e definições JSON adaptadas para cada tema.
+- `eww/`: Dashboard e lógica de scripts para os widgets de sistema.
+- `rofi/`: Temas e scripts para o menu de apps e menu de energia.
+- `themes/`: Ficheiros de configuração específicos (Starship, Kitty, etc.) para cada esquema de cores.
+
+## 📸 Screenshots
+
+> Adicione aqui capturas de ecrã dos seus temas!
+
+```
+screenshots/
+├── catppuccin-mocha.png
+├── gruvbox-dark.png
+└── tokyo-night-storm.png
+```
+
+## ⭐ Créditos
+
+Criado com dedicação por **[Seu Nome/Username]**. Se este repositório te ajudou ou te deu ideias para o teu próprio setup, não te esqueças de deixar uma estrela! 🌟
+
+---
+
+**Arch Linux** | **Hyprland** | **Wayland** | **Rice**

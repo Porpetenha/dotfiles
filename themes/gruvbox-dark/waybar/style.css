@@ -1,6 +1,4 @@
-/* @import "/home/porpetenha/dotfiles/themes/tokyo-night-storm/waybar/tokyo.css" */
 @import "/home/porpetenha/dotfiles/themes/gruvbox-dark/waybar/gruvbox.css";
-
 @define-color background @bg;
 
 * {
@@ -20,18 +18,28 @@ window#waybar.hidden {
     opacity: 0.2;
 }
 
+#tray {
+    color: @purple;
+    padding: 0 6px;
+    border-radius: 5px;
+}
+
 #custom-os_button {
     color: @blue;
-    padding: 0 12px;
+    padding: 0 6px;
     margin-left: 5px;
+    border-radius: 5px;
 }
 
 #custom-notify {
     color: @yellow;
+    padding: 0 6px;
+    border-radius: 5px;
 }
 
 #clock {
     color: @green;
+    border-radius: 5px;
 }
 
 #workspaces {
@@ -53,7 +61,6 @@ window#waybar.hidden {
     color: @red;
 }
 
-
 /* If workspaces is the leftmost module, omit left margin */
 .modules-left > widget:first-child > #workspaces {
     margin-left: 0;
@@ -72,12 +79,24 @@ window#waybar.hidden {
 }
 
 /* Hover effects */
+#clock:hover {
+    background-color: rgba(152, 151, 26, 0.3); /* @green com transparência */
+    color: @green;
+}
 
+#custom-notify:hover {
+    background-color: rgba(215, 153, 33, 0.3); /* @yellow com transparência */
+    color: @yellow;
+}
 
-#clock:hover,
-#custom-notify:hover,
-#custom-os_button:hover{
-    
+#custom-os_button:hover {
+    background-color: rgba(69, 133, 136, 0.3); /* @blue com transparência */
+    color: @blue;
+}
+
+#tray:hover {
+    background-color: rgba(177, 98, 134, 0.3); /* @purple com transparência */
+    color: @purple;
 }
 
 tooltip {
@@ -87,4 +106,3 @@ tooltip {
     border-radius: 5px;
     border: 2px solid @border;
 }
-

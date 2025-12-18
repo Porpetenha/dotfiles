@@ -14,10 +14,10 @@ sleep=" Suspend"
 
 # Rofi CMD
 rofi_cmd() {
-	rofi -dmenu \
-		-p "$host" \
-		-mesg "Uptime: $uptime" \
-		-theme ${theme}
+  rofi -dmenu \
+    -p "$host" \
+    -mesg "Uptime: $uptime" \
+    -theme ${theme}
 }
 
 selected_option=$(echo "$poweroff
@@ -28,7 +28,8 @@ $logout" | rofi_cmd)
 
 if [ "$selected_option" == "$lock" ]
 then
-  hyprlock
+  # AQUI: Espera o Rofi fechar antes de travar
+  sleep 0.5; hyprlock
 elif [ "$selected_option" == "$logout" ]
 then
   hyprctl dispatch exit
@@ -40,7 +41,8 @@ then
   systemctl reboot
 elif [ "$selected_option" == "$sleep" ]
 then
-  hyprlock & sleep 2 && systemctl suspend
+  # AQUI TAMBÉM: Espera o Rofi fechar -> trava -> espera travar -> suspende
+  sleep 0.5; hyprlock & sleep 2 && systemctl suspend
 else
   echo "No match"
 fi

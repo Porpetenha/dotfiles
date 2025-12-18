@@ -18,7 +18,7 @@
     ],
 
     "modules-right": [
-        //"tray",
+        "tray",
         "custom/notify",
         "custom/os_button"
     ],
@@ -42,8 +42,9 @@
     },
 
     "tray": {
-        // "icon-size": 21,
-        "spacing": 10
+        //"icon-size": 21,
+        "spacing": 10,
+        "tooltip": false
     },
 
     "clock": {

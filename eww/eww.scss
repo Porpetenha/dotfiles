@@ -1,108 +1,128 @@
-// @use "sass:color";
+@use "sass:color";
 
-// $bg: #1e1e2e;
-// $text: #eba0ac;
-// $text-dark: #9399b2;
-// $purple: #cba6f7;
-// $yellow: #fbecc9;
+$bg: #282828;
+$bg1: #504945;
+$bg2: #3c3836;
+$fg: #ebdbb2;
+$fg1: #a89984;
+$highlight: #b8bb26;
+* {
+  all: unset;
+  font-family: "JetBrainsMono Nerd Font";
+  //border: solid 1px white;
+  //background-color: $bg;
+  color: $fg;
+}
 
-// * {
-//   all: unset;
-//   font-family: "JetBrainsMono Nerd Font";
-//   //border: solid 1px white;
-//   //background-color: #313244;
-// }
+.calendar {
+    border: none;
+    background-color: transparent;
+}
 
-// .cal {
-//   background-color: $bg;
-//   font-family: JetBrainsMono Nerd Font;
-//   font-size: 18px;
-//   font-weight: normal;
-//   border-radius: 14px;
+.cal-box {
+    border: solid 2px $fg;
+    background-color: $bg;
+    border-radius: 4px;
+    padding: 10px 20px;
+}
 
-//   .cal-in {
-//     padding: 0px 10px 0px 10px;
-//     color: #bfc9db;
+.clock {
+    background-color: $bg1;
+    border-radius: 10px;
+    font-size: 30px;
+}
 
-//     .cal {
-//       &.highlight {
-//         padding: 20px;
-//       }
+.cal {
+  font-weight: normal;
+  background-color: $bg1;
+  border-radius: 10px;
 
-//       padding: 2px 2px 2px 2px;
-//       //margin-left: 10px;
+  .cal-in {
+    padding: 0px 0px;
 
-//       border: none;
-//     }
-//   }
-// }
+    .cal {
+      &.highlight {
+        padding: 20px;
+      }
 
-// calender {
-//   color: $text-dark;
-//   border: none;
-// }
+      padding: 2px 5px;
+      //margin-left: 10px;
 
-// calendar:selected {
-//   color: $yellow;
-//   border: none;
-// }
+      border: none;
+    }
+  }
+}
 
-// calendar.header {
-//   color: $text;
-//   font-weight: bold;
-//   border: none;
-// }
+calendar:selected {
+  color: $highlight;
+  border: none;
+  font-weight: bold;
+}
 
-// calendar.button {
-//   color: $text;
-//   border: none;
-// }
+calendar:indeterminate {
+  color: $fg1;
+  border: none;
+}
 
-// calendar.highlight {
-//   color: $yellow;
-//   font-weight: bold;
-//   border: none;
-// }
+.weather {
+    background-color: $bg1;
+    border-radius: 10px;
+}
 
-// calendar:indeterminate {
-//   color: $text-dark;
-//   border: none;
-// }
+.weather-desc {
+    font-size: 13px;
+}
 
-// .minha-box {
-//   background-color: #08082e;
-//   color: white;
-//   border-radius: 10px;
-//   padding: 10px;
-// }
+.weather-icon {
+    font-size: 40px;
+}
 
-// .clock {
-//   background-color: transparent;
-//   color: $yellow;
-//   border-radius: 10px;
-//   padding: 10px;
-//   font-size: 30px;
-// }
+.main-panel {
+  border: solid 2px $fg;
+  border-radius: 4px;
+  background-color: $bg;
+  padding: 10px 10px;
+  margin-top: 10px;
+  margin-right: 10px;
+}
 
-// .weather-icon {
-//   font-size:75px;
-// }
+.power-buttons{
+  background-color: $bg2;
+  border-radius: 10px;
+  padding: 5px 5px;
+}
 
-// .weather-temp {
-//   font-size:30px;
-// }
+.shutdown{
+  background-color: $bg1;
+  border-radius: 10px;
+  padding: 0px 0px;
+  
+}
 
-// .weather-desc {
-//   font-size:15px;
-// }
+.reboot{
+  background-color: $bg1;
+  border-radius: 10px;
+  padding: 0px 0px;
+  
+}
 
-// .main-panel {
-//   border-radius: 20px;
-//   background-color: #08082e;
-// }
+.lock{
+  background-color: $bg1;
+  border-radius: 10px;
+  padding: 0px 0px;
+  
+}
 
-// .box {
-//   background-color: $text-dark;
-//   border-radius: 20px;
-//   margin: 10px;
-// }
+.suspend{
+  background-color: $bg1;
+  border-radius: 10px;
+  padding: 0px 0px;
+  
+}
+
+.exit{
+  background-color: $bg1;
+  border-radius: 10px;
+  padding: 0px 0px;
+  
+}

@@ -19,6 +19,7 @@
 
     "modules-right": [
         "tray",
+        "custom/music",
         "custom/notify",
         "custom/os_button"
     ],
@@ -34,6 +35,9 @@
 
     "hyprland/workspaces": {
         "format": "{icon}",
+        "format-icons": {
+            "urgent": "󰀨"
+        },
     	"on-scroll-up": "hyprctl dispatch workspace e+1",
     	"on-scroll-down": "hyprctl dispatch workspace e-1",
 		"persistent-workspaces": {
@@ -58,7 +62,14 @@
         "format": "󰂚",
         "on-click": "exec swaync-client -t -sw",
         "tooltip": false,
-        "tooltip-format": "Notificações"
+        "tooltip-format": ""
+    },
+
+    "custom/music": { 
+        "format": "",
+        "on-click": "eww c spotify-widget || eww o spotify-widget",
+        "tooltip": false,
+        "tooltip-format": ""
     }
 
 }

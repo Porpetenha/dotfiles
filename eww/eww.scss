@@ -5,25 +5,31 @@ $bg1: #504945;
 $bg2: #3c3836;
 $fg: #ebdbb2;
 $fg1: #a89984;
-$highlight: #b8bb26;
+
+$red: #cc241d;
+$orange: #fe8019;
+$yellow: #d79921;
+$green: #98971a;
+$blue: #458588;
+
 * {
   all: unset;
   font-family: "JetBrainsMono Nerd Font";
   //border: solid 1px white;
-  //background-color: $bg;
   color: $fg;
 }
 
 .calendar {
     border: none;
     background-color: transparent;
+    margin-top: 10px;
 }
 
 .cal-box {
     border: solid 2px $fg;
     background-color: $bg;
     border-radius: 4px;
-    padding: 10px 20px;
+    padding: 10px 10px;
 }
 
 .clock {
@@ -36,6 +42,7 @@ $highlight: #b8bb26;
   font-weight: normal;
   background-color: $bg1;
   border-radius: 10px;
+  padding: 0px 3px;
 
   .cal-in {
     padding: 0px 0px;
@@ -44,17 +51,13 @@ $highlight: #b8bb26;
       &.highlight {
         padding: 20px;
       }
-
-      padding: 2px 5px;
-      //margin-left: 10px;
-
       border: none;
     }
   }
 }
 
 calendar:selected {
-  color: $highlight;
+  color: $green;
   border: none;
   font-weight: bold;
 }
@@ -77,52 +80,216 @@ calendar:indeterminate {
     font-size: 40px;
 }
 
+//Menu
+
 .main-panel {
   border: solid 2px $fg;
   border-radius: 4px;
   background-color: $bg;
-  padding: 10px 10px;
+  padding: 0px 10px;
   margin-top: 10px;
   margin-right: 10px;
+}
+
+.profile-box{
+  background-color: $bg1;
+  border-radius: 10px;
+  margin: 10px 0px 10px 0px;
+}
+
+.profile-pic {
+  padding: 5px 0px;
+}
+
+.pacman-box{
+  background-color: $bg2;
+  border-radius: 10px;
+}
+
+.pacman-icon{
+  background-color: $bg1;
+  border-radius: 10px;
+  margin: 5px 5px;
+  padding-right: 10px;
+  font-size: 50px;
+  color: $yellow;
+}
+
+.pacman-stats{
+  background-color: $bg1;
+  border-radius: 10px;
+  margin: 5px 5px 5px 0px;
+}
+
+.uptime{
+  background-color: $bg1;
+  border-radius: 10px;
+  margin: 10px 0px;
 }
 
 .power-buttons{
   background-color: $bg2;
   border-radius: 10px;
   padding: 5px 5px;
+  margin: 0px 0px 10px 0px;
 }
 
-.shutdown{
-  background-color: $bg1;
-  border-radius: 10px;
-  padding: 0px 0px;
-  
+$power-buttons: (
+  'shutdown': $red,
+  'reboot': $orange,
+  'lock': $yellow,
+  'suspend': $green,
+  'exit': $blue
+);
+
+@each $name, $accent in $power-buttons {
+  .#{$name} {
+    background-color: $bg1;
+    border-radius: 10px;
+    padding: 0px 0px;
+    transition: all 0.2s;
+    
+    &:hover {
+      background-color: $accent;
+    }
+    
+    & label {
+      color: $accent;
+    }
+    
+    &:hover label {
+      color: $fg;
+    }
+  }
 }
 
-.reboot{
-  background-color: $bg1;
-  border-radius: 10px;
-  padding: 0px 0px;
-  
+.vol-icon, .br-icon {
+  margin-right: 15px;
 }
 
-.lock{
+.vol, .br{
   background-color: $bg1;
   border-radius: 10px;
-  padding: 0px 0px;
-  
+  margin: 0px 0px 10px 0px;
+  padding: 5px 10px;
+
+  scale {
+    min-width: 150px; 
+    min-height: 5px;
+    
+    trough {
+      min-width: 150px;
+      min-height: 5px;
+      background-color: $bg2;
+      border-radius: 5px;
+    }
+    
+    highlight {
+      border-radius: 5px;
+    }
+    
+    slider {
+      min-width: 10px;
+      min-height: 10px;
+      background-color: $fg;
+      border-radius: 50%;
+    }
+  }
 }
 
-.suspend{
-  background-color: $bg1;
-  border-radius: 10px;
-  padding: 0px 0px;
-  
+.vol {
+  scale{
+      highlight {
+      background-color: $blue;
+    }
+  }
 }
 
-.exit{
+.br {
+  scale{
+      highlight {
+      background-color: $yellow;
+    }
+  }
+}
+.closer{
+  background-color: rgba($fg, 0.3);
+}
+
+.container {
+  background-color: $bg;
+}
+
+.bar-clock label{
+  background-color: transparent;
+  padding: 0px 5px;
+  color: $green;
+}
+
+.arch {
+  background-color: red;
+
+  label{
+    margin-right: 5px;
+    color: $blue;
+  }
+}
+
+.spotify-main {
+  background-color: $bg;
+  border: solid 2px $fg;
+  margin-right: 10px;
+  margin-top: 10px;
+  border-radius: 2px;
+}
+
+.spotify-cover {
+  margin: 10px 10px 10px 10px;
+  background-color: $bg2;
+  padding: 0px 5px;
+  border-radius: 10px;
+}
+
+.spotify-content {
+  background-color: $bg2;
+  margin: 10px 10px 10px 0px;
+  padding: 10px 10px;
+  border-radius: 10px;
+}
+
+.spotify-controls button {
+  background-color: $bg1;
+  padding: 5px 10px;
+  border-radius: 10px;
+}
+
+.spotify-progress-container {
   background-color: $bg1;
   border-radius: 10px;
-  padding: 0px 0px;
-  
+  margin: 0px 0px 10px 0px;
+  padding: 5px 10px;
+
+  scale {
+    min-width: 150px; 
+    min-height: 5px;
+    
+    trough {
+      min-width: 150px;
+      min-height: 5px;
+      background-color: $bg2;
+      border-radius: 5px;
+    }
+    
+    highlight {
+      border-radius: 5px;
+      background-color: $orange;
+    }
+    
+    slider {
+      min-width: 10px;
+      min-height: 10px;
+      background-color: $fg;
+      border-radius: 50%;
+    }
+  }
 }

@@ -1,10 +1,7 @@
-@import "/home/porpetenha/dotfiles/themes/gruvbox-dark/waybar/gruvbox.css";
-@define-color background @bg;
-
 * {
     /* `otf-font-awesome` is required to be installed for icons */
     font-family: JetBrainsMono Nerd Font Propo, Roboto, Helvetica, Arial, sans-serif;
-    font-size: 12px;
+    font-size: 14px;
     font-weight: bold;
 }
 
@@ -18,47 +15,57 @@ window#waybar.hidden {
     opacity: 0.2;
 }
 
-#tray {
-    color: @purple;
-    padding: 0 6px;
-    border-radius: 5px;
-}
-
 #custom-os_button {
     color: @blue;
     padding: 0 6px;
-    margin-left: 5px;
-    border-radius: 5px;
+    transition: all 0.2s;
 }
 
 #custom-notify {
     color: @yellow;
     padding: 0 6px;
-    border-radius: 5px;
+    transition: all 0.2s;
+}
+
+#custom-music {
+    color: @aqua;
+    padding: 0 6px;
+    transition: all 0.2s;
 }
 
 #clock {
     color: @green;
-    border-radius: 5px;
+    padding: 0 6px;
+    transition: all 0.2s;
 }
 
 #workspaces {
 }
 
+#workspaces button {
+    transition: all 0.2s;
+    padding: 0 5px;
+    border-radius: 0px;
+}
+
 #workspaces button.persistent {
     color: @orange;
+    border-radius: 0px;
 }
 
 #workspaces button.empty {
     color: @fg;
+    border-radius: 0px;
 }
 
 #workspaces button.active {
     color: @red;
+    border-radius: 0px;
 }
 
 #workspaces button.urgent {
     color: @red;
+    border-radius: 0px;
 }
 
 /* If workspaces is the leftmost module, omit left margin */
@@ -71,38 +78,79 @@ window#waybar.hidden {
     margin-right: 0;
 }
 
-@keyframes blink {
-    to {
-        background-color: #ffffff;
-        color: #222000;
-    }
-}
-
 /* Hover effects */
-#clock:hover {
-    background-color: rgba(152, 151, 26, 0.3); /* @green com transparência */
-    color: @green;
+
+#custom-os_button:hover {
+    color: @fg;
+    background-color: @blue;
 }
 
 #custom-notify:hover {
-    background-color: rgba(215, 153, 33, 0.3); /* @yellow com transparência */
-    color: @yellow;
+    color: @fg;
+    background-color: @yellow;
 }
 
-#custom-os_button:hover {
-    background-color: rgba(69, 133, 136, 0.3); /* @blue com transparência */
-    color: @blue;
+#custom-music:hover {
+    color: @fg;
+    background-color: @aqua;
 }
 
-#tray:hover {
-    background-color: rgba(177, 98, 134, 0.3); /* @purple com transparência */
-    color: @purple;
+#clock:hover {
+    color: @fg;
+    background-color: @green;
 }
 
-tooltip {
-    color: @text;
-    background-color: @surface0;
-    text-shadow: none;
-    border-radius: 5px;
-    border: 2px solid @border;
+#workspaces button.persistent:hover {
+    color: @fg;
+    background-color: @orange;
+    border-radius: 0px;
 }
+
+#workspaces button.empty:hover {
+    color: @bg;
+    background-color: @fg;
+    border-radius: 0px;
+}
+
+#workspaces button.active:hover {
+    color: @fg;
+    background-color: @red;
+    border-radius: 0px;
+}
+
+#workspaces button.urgent:hover {
+    color: @bg;
+    background-color: @red;
+    border-radius: 0px;
+}
+
+@define-color red #cc241d;
+@define-color green #98971a;
+@define-color yellow #d79921;
+@define-color blue #458588;
+@define-color purple #b16286;
+@define-color aqua #689d6a;
+@define-color gray #a89984;
+@define-color orange #fe8019;
+@define-color gray-dark #928374;
+@define-color red-bright #fb4934;
+@define-color green-bright #b8bb26;
+@define-color yellow-bright #fabd2f;
+@define-color blue-bright #83a598;
+@define-color purple-bright #d3869b;
+@define-color aqua-bright #8ec07c;
+@define-color orange-dark #d65d0e;
+@define-color bg #282828;
+@define-color bg0-h #1d2021;
+@define-color bg0 #282828;
+@define-color bg1 #3c3836;
+@define-color bg2 #504945;
+@define-color bg3 #665c54;
+@define-color bg4 #7c6f64;
+@define-color bg0-s #32302f;
+@define-color fg #ebdbb2;
+@define-color fg4 #a89984;
+@define-color fg3 #bdae93;
+@define-color fg2 #d5c4a1;
+@define-color fg1 #ebdbb2;
+@define-color fg0 #fbf1c7;

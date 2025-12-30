@@ -1,0 +1,37 @@
+(defwidget panel []
+	(box :class "main-panel" :orientation "v" :space-evenly false
+		(box :class "profile-box" :orientation "h"
+			(image :class "profile-pic" :path "/home/porpetenha/dotfiles/.face.png" :image-width 96)
+			(label :class "username" :text "porpetenha"))
+		;Pacman
+		(box :class "pacman-box"
+			(label :class "pacman-icon" :text "󰮯")
+			(box :class "pacman-stats" :orientation "v"
+				(label :class "packges" :text "${pacman-packages} 󰏓" )
+				(label :class "updates" :text "${pacman-updates} ")))
+		;Stats menu
+				(label :class "uptime" :halign "fill" :text "up: ${system-uptime}")
+		;Power menu
+		(box :class "power-buttons" :orientation "h" :spacing 5
+			(eventbox :class "shutdown" :cursor "pointer" :onclick "systemctl poweroff" (label :text "⏻"))
+			(eventbox :class "reboot" :cursor "pointer" :onclick "systemctl reboot" (label :text ""))
+			(eventbox :class "lock" :cursor "pointer" :onclick "hyprlock & sleep 0.5" (label :text ""))
+			(eventbox :class "suspend" :cursor "pointer" :onclick "hyprlock & sleep 1 & systemctl suspend" (label :text ""))
+			(eventbox :class "exit" :cursor "pointer" :onclick "hyprctl dispatch exit" (label :text "󰍃")))
+		;Control menu
+		(box :class "vol" :orientation "h" :space-evenly false 
+			(label :class "vol-icon" :text volume-icon)
+			(scale :value volume-value :onchange "~/dotfiles/eww/scripts/volume.sh set {}" :min 0 :max 101 :hexpand true))
+		(box :class "br" :orientation "h" :space-evenly false
+			(label :class "br-icon" :text br-icon)
+			(scale :value br :onchange "~/dotfiles/eww/scripts/brightness.sh set {}" :min 0 :max 101 :hexpand true)
+		)
+	)
+)
+
+(defwindow menu
+	:geometry (geometry :x "0px" :y "0px" :anchor "top right" :width "15%")
+	:monitor 0
+	:stacking "fg"
+  	(panel)
+)

@@ -1,0 +1,51 @@
+(defpoll spotify_status :interval "500ms" `playerctl -p spotify status 2>/dev/null || echo "Stopped"`)
+(defpoll spotify_title :interval "500ms" `playerctl -p spotify metadata title 2>/dev/null || echo "Nenhuma música tocando"`)
+(defpoll spotify_artist :interval "500ms" `~/.config/eww/scripts/spotify-get-artist`)
+(defpoll spotify_album :interval "500ms" `playerctl -p spotify metadata album 2>/dev/null || echo ""`)
+(defpoll spotify_cover :interval "2s" :initial-value "/tmp/worm/spotify/cover.png" `~/.config/eww/scripts/spotify-get-cover && ~/.config/eww/scripts/spotify-echo-cover`)
+(defpoll spotify_position :interval "500ms" `playerctl -p spotify position 2>/dev/null || echo "0"`)
+(defpoll spotify_length :interval "1s" `playerctl -p spotify metadata mpris:length 2>/dev/null | awk '{printf "%.0f", $1/1000000}' || echo "0"`)
+
+(defvar spotify_position_formatted "0:00")
+(defvar spotify_length_formatted "0:00")
+
+
+(defwidget spotify []
+    (box :class "spotify-main":orientation "h" :space-evenly false 
+      ;; Capa do álbum
+      (box :class "spotify-cover-container"
+        (image :class "spotify-cover" :path spotify_cover :image-width 120 :image-height 120))
+      ;; Informações e controles
+      (box :class "spotify-content" :orientation "v" :space-evenly false :spacing 8 :hexpand true
+        ;; Título e artista
+        (box :class "spotify-info" :orientation "v" :space-evenly false :spacing 3
+          (label :class "spotify-title" :limit-width 35 :wrap false :text spotify_title)
+          (label :class "spotify-artist" :limit-width 35 :wrap false :text spotify_artist))
+          ;(label :class "spotify-album" :limit-width 35 :wrap false :text spotify_album)
+        ;; Barra de progresso
+        (box :class "spotify-progress-container" :orientation "v" :space-evenly false :spacing 5
+          (scale :class "spotify-progress" :value {spotify_length > 0 ? (spotify_position / spotify_length * 100) : 0} :min 0 :max 100 :onchange "playerctl -p spotify position $(echo 'scale=2; {} * ${spotify_length} / 100' | bc)") 
+          ;; Tempo atual / tempo total
+          (box :class "spotify-time" :orientation "h" :space-evenly true
+            (label :class "spotify-time-current" :halign "start" :text {spotify_position > 0 ? "${round(spotify_position / 60, 0)}:${spotify_position % 60 < 10 ? '0' : ''}${round(spotify_position % 60, 0)}" : "0:00"})
+            (label :class "spotify-time-total" :halign "end" :text {spotify_length > 0 ? "${round(spotify_length / 60, 0)}:${spotify_length % 60 < 10 ? '0' : ''}${round(spotify_length % 60, 0)}" : "0:00"})))
+        ;; Controles
+        (box :class "spotify-controls" :orientation "h" :space-evenly true :halign "center" :spacing 15
+          (button :class "spotify-btn shuffle" :cursor "pointer" :onclick "playerctl -p spotify shuffle toggle" :tooltip "Aleatório" "󰒝")
+          (button :class "spotify-btn" :onclick "playerctl -p spotify previous" :tooltip "Anterior" "󰒮")
+          (button :class "spotify-btn play-pause" :onclick "playerctl -p spotify play-pause" :tooltip {spotify_status == "Playing" ? "Pausar" : "Tocar"} {spotify_status == "Playing" ? "󰏤" : "󰐊"})
+          (button :class "spotify-btn" :onclick "playerctl -p spotify next" :tooltip "Próxima" "󰒭")
+          (button :class "spotify-btn loop" :onclick "playerctl -p spotify loop toggle" :tooltip "Repetir" "󰑖"))
+        )
+    )
+)
+
+
+;; ===== JANELA =====
+(defwindow spotify-widget
+  :monitor 0
+  :geometry (geometry :x "00px" :y "0px" :width "500px" :height "0px" :anchor "top right")
+  :stacking "overlay"
+  :exclusive false
+  :focusable false
+  (spotify))

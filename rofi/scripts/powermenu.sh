@@ -42,7 +42,7 @@ then
 elif [ "$selected_option" == "$sleep" ]
 then
   # AQUI TAMBÉM: Espera o Rofi fechar -> trava -> espera travar -> suspende
-  sleep 0.5; hyprlock & sleep 2 && systemctl suspend
+  sleep 0.5; hyprlock & sleep 1 && systemctl suspend
 else
   echo "No match"
 fi

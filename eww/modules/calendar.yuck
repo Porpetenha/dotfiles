@@ -1,0 +1,21 @@
+(defwidget calendar-widget []
+	(box :class "cal-box" :orientation "v" :spacing 10 :halign "center" :space-evenly false
+		(label :class "clock" :text current-time)
+		;(label :class "date" :text full_date)	
+			(box :class "cal-in"
+				(calendar :class "cal" :day calendar_day :year calendar_year))
+		;Weather
+		; (box :class "weather" :orientation "h" :hexpand true
+  		; 	(box  :orientation "v" 
+    	; 		(label :class "weather-desc" :text weather-desc)
+   		;  		(label :class "weather-temp" :text weather-temp))
+  		; 	(label :class "weather-icon" :halign "center" :text weather-icon :style "color: ${weather-color}")
+		;)
+	)
+)
+
+(defwindow calendar
+	:geometry (geometry :x "0px" :y "0px" :anchor "top center" :width "270px" :height "60px")
+	:monitor 0
+  	(calendar-widget)
+)

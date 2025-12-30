@@ -1,0 +1,16 @@
+(defwidget top-bar []
+	(box :class "container"
+	(box :class "left")
+	(box :class "center" :space-evenly false :halign "center"
+		(eventbox :class "bar-clock" :cursor "pointer" :onclick "eww c calendar || eww o calendar " (label :text "${current-time} 󰥔")))
+	(box :class "right" :space-evenly false :halign "end"
+		(eventbox :class "arch" :cursor "pointer" :onclick "(eww close menu && sleep 0.1) || (eww open menu && sleep 0.1)" (label :text "󰣇")))))
+
+
+(defwindow bar
+  :monitor 0
+  :geometry (geometry :x "0px" :y "0px" :anchor "top center" :width "100%" :height "30px")
+  :stacking "fg"
+  :exclusive true
+  (top-bar)
+)

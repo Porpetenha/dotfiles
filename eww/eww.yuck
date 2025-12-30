@@ -9,6 +9,9 @@
 (defpoll weather-desc :interval "5s" "~/dotfiles/eww/scripts/weather.sh --stat")
 (deflisten weather-color :initial "#7aa2f7" "~/dotfiles/eww/scripts/weather.sh --hex")
 
+(defpoll pacman-packages :interval "10m" "pacman -Q | wc -l")
+(defpoll pacman-updates :interval "10m" "checkupdates | wc -l")
+
 (defpoll system-uptime :interval "1m" "~/dotfiles/eww/scripts/get_uptime.sh")
 
 (defpoll volume-icon :interval "1s" "~/dotfiles/eww/scripts/volume.sh icon")
@@ -19,60 +22,15 @@
 (defpoll br-icon :interval "1s" "~/dotfiles/eww/scripts/brightness.sh icon")
 (defpoll br :interval "1s" "~/dotfiles/eww/scripts/brightness.sh br")
 
-(defwidget minha-box []
-	(box :class "cal-box" :orientation "v" :spacing 10 :halign "center" :space-evenly false
-		(label :class "clock" :text current-time)
-		;(label :class "date" :text full_date)	
-		(box :class "cal" :orientation "v"
-			(box :class "cal-in"
-				(calendar :class "cal" :day calendar_day :year calendar_year)))
-		;Weather
-		(box :class "weather" :orientation "h" :space-evenly false
-  			(box  :orientation "v" 
-    			(label :class "weather-desc" :text weather-desc)
-   		 		(label :class "weather-temp" :text weather-temp))
-			(box :orientation "v" 
-  				(label :class "weather-icon" :halign "center" :text weather-icon :style "color: ${weather-color}")))))
+(include "modules/calendar.yuck")
+(include "modules/menu.yuck")
+(include "modules/bar.yuck")
+(include "modules/music.yuck")
 
-(defwindow calendar
-	:geometry (geometry :x "5px" :y "10px" :anchor "top center" :width "270px" :height "60px")
-	:monitor 0
-  	(minha-box))
-
-(defwidget panel []
-	(box :class "main-panel" :orientation "v"
-		(box :class "box" :orientation "h"
-			(image :class "profile-pic" :path "/home/porpetenha/dotfiles/.face.jpg" :image-width 96)
-			(label :class "username" :text "Porpetenha"))
-		(box :class "box" :orientation "v" :halign "fill"
-				(label :class "uptime" :halign "start" :text system-uptime :halign "center"))
-		(box :class "power-buttons":orientation "h" :spacing 5
-			(eventbox :class "shutdown" :cursor "pointer" :onclick "systemctl poweroff" :tooltip "Desligar" (label :text "⏻"))
-			(eventbox :class "reboot" :cursor "pointer" :onclick "systemctl reboot" :tooltip "Reiniciar" (label :text ""))
-			(eventbox :class "lock" :cursor "pointer" :onclick "hyprlock" :tooltip "Bloquear" (label :text ""))
-			(eventbox :class "suspend" :cursor "pointer" :onclick "hyprlock & sleep 2 && systemctl suspend" :tooltip "Suspender" (label :text ""))
-			(eventbox :class "exit" :cursor "pointer" :onclick "hyprctl dispatch exit" :tooltip "Sair" (label :text "󰍃")))
-		(box :class "box" :orientation "v"
-			(box :orientation "h"
-				(label :class "vol-label" :text volume-icon )
-				(scale :value volume-value :onchange "~/dotfiles/eww/scripts/volume.sh set {}" :min 0 :max 101))
-			(box :orientation "h"
-				(label :class "br-label" :text br-icon)
-				(scale :value br :onchange "~/dotfiles/eww/scripts/brightness.sh set {}" :min 0 :max 101)))
-			))
-
-
-(defwindow menu
-	:geometry (geometry :x "0px" :y "0px" :anchor "top right" :width "270px" :height "60px")
-	:monitor 0
-	:stacking "fg"
-  	(panel))
-
-; (defwidget closer []
-;     (eventbox :onclick "eww close-all"))
   
-; (defwindow background-closer
-;   :monitor 0
-;   :geometry (geometry :width "100%" :height "100%")
-;   :stacking "fg"
-;   (closer))
+(defwindow bg-closer
+  :monitor 0
+  :geometry (geometry :width "100%" :height "100%")
+  :stacking "fg"
+  (eventbox :class "closer" :onclick "eww close-all")
+)

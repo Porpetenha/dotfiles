@@ -21,9 +21,8 @@ window {
 
     enabled:                     true;
     margin:                      0px;
-    padding:                     0px;
-    border:                      0px solid;
-    border-radius:               12px;
+    padding:                     20px;
+    border:                      2px solid;
     border-color:                @selected;
     background-color:            @background;
     cursor:                      "default";
@@ -45,22 +44,23 @@ mainbox {
 /*****----- Inputbar -----*****/
 inputbar {
     enabled:                     true;
-    spacing:                     10px;
-    margin:                      0px;
-    padding:                     15px;
+    spacing:                     0px;
+    margin:                      0px 0px 10px 0px;
+    padding:                     0px;
     border:                      0px solid;
-    border-radius:               0px;
     border-color:                @selected;
-    background-color:            @background;
+    background-color:            @background-alt;
     text-color:                  @foreground;
     children:                    [ "prompt", "entry" ];
 }
 
 prompt {
     enabled:                     true;
-    background-color:            inherit;
-    text-color:                  inherit;
+    padding:                     12px;
+    background-color:            @selected;
+    text-color:                  @background;
 }
+
 textbox-prompt-colon {
     enabled:                     true;
     expand:                      false;
@@ -68,8 +68,10 @@ textbox-prompt-colon {
     background-color:            inherit;
     text-color:                  inherit;
 }
+
 entry {
     enabled:                     true;
+    padding:                     12px;
     background-color:            inherit;
     text-color:                  inherit;
     cursor:                      text;
@@ -110,7 +112,7 @@ scrollbar {
 /*****----- Elements -----*****/
 element {
     enabled:                     true;
-    spacing:                     15px;
+    spacing:                     0px;    
     margin:                      0px;
     padding:                     0px 10px;
     border:                      0px solid;
@@ -121,6 +123,7 @@ element {
     orientation:                 vertical;
     cursor:                      pointer;
 }
+
 element normal.normal {
     background-color:            transparent;
     text-color:                  @foreground;
@@ -132,9 +135,10 @@ element selected.normal {
 element-icon {
     background-color:            transparent;
     text-color:                  inherit;
-    size:                        200px;
+    size:                        150px;    
     cursor:                      inherit;
 }
+
 element-text {
     background-color:            transparent;
     text-color:                  inherit;
@@ -143,7 +147,6 @@ element-text {
     vertical-align:              0.5;
     horizontal-align:            0.5;
 }
-
 
 element.normal.normal {
     background-color: @background;
@@ -159,7 +162,7 @@ element.normal.active {
 }
 element.selected.normal {
     background-color: @selected;
-    text-color:       @foreground;
+    text-color:       @background;
 }
 element.selected.urgent {
     background-color: @selected;

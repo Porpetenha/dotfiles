@@ -19,8 +19,9 @@
 
     "modules-right": [
         "tray",
-        "custom/music",
-        "custom/notify",
+        //"custom/sys-mon",
+        //"custom/music",
+        //"custom/notify",
         "custom/os_button"
     ],
 
@@ -70,8 +71,14 @@
         "on-click": "eww c spotify-widget || eww o spotify-widget",
         "tooltip": false,
         "tooltip-format": ""
-    }
+    },
 
+"custom/sys-mon": {
+    "exec": "~/.config/waybar/scripts/simple-sysmon.py",
+    "return-type": "json",
+    "interval": 3,
+    "format": "{}",
+    "tooltip": true
 }
-
+}
 

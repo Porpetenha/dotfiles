@@ -1,0 +1,67 @@
+.spotify-main {
+  background-color: $bg;
+  border: solid 2px $fg;
+  margin-right: 10px;
+  margin-top: 10px;
+  border-radius: 10px;
+}
+
+.spotify-cover {
+  margin: 10px 10px 10px 10px;
+  background-color: $bg2;
+  padding: 0px 5px;
+  border-radius: 10px;
+}
+
+.spotify-content {
+  background-color: $bg2;
+  margin: 10px 10px 10px 0px;
+  padding: 10px 10px;
+  border-radius: 10px;
+}
+
+.spotify-controls { 
+  background-color: transparent;
+  
+  button {
+    background-color: $bg1;
+    padding: 5px 10px;
+    border-radius: 10px;
+ }
+}
+
+.spotify-progress-container {
+  background-color: $bg1;
+  border-radius: 10px;
+  margin: 0px 0px 0px 0px;
+  padding: 5px 10px;
+
+  scale {
+    min-width: 150px; 
+    min-height: 5px;
+    
+    trough {
+      min-width: 150px;
+      min-height: 5px;
+      background-color: $bg2;
+      border-radius: 5px;
+    }
+    
+    highlight {
+      border-radius: 5px;
+      background-color: $orange;
+    }
+    
+    slider {
+      min-width: 10px;
+      min-height: 10px;
+      background-color: $fg;
+      border-radius: 50%;
+    }
+  }
+}
+
+.spotify-info {
+  background-color: $bg1;
+  border-radius: 10px;
+}

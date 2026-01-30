@@ -1,0 +1,25 @@
+@theme "config.rasi"
+
+/*****----- Configuration -----*****/
+configuration {
+	modi:                       "drun";
+    show-icons:                 false;
+	drun-display-format:        "{name}";
+    font: "JetBrainsMono Nerd Font Propo 13";
+}
+
+/*****----- Main Window -----*****/
+window {
+    width: 250px;
+}
+
+inputbar {
+    enabled: false;
+}
+
+/*****----- Listview -----*****/
+listview {
+    enabled: true;
+    columns: 1;
+    lines: 3;
+}

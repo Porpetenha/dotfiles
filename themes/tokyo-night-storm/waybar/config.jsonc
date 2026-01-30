@@ -3,7 +3,7 @@
     "layer": "top", // Waybar at top layer
     //"position": "bottom", // Waybar position (top|bottom|left|right)
     "height": 10, // Waybar height (to be removed for auto height)
-    "width": 1890, // Waybar width
+    "width": 1906, // Waybar width
     "margin": 4,
     //"spacing": 4, // Gaps between modules (4px)
     
@@ -27,7 +27,7 @@
         "format":"󰣇",
         "on-click": "eww c menu || eww o menu",
         "on-click-right": "rofi -show drun",
-        "tooltip": true,
+        "tooltip": false,
         "tooltip-format": "btw 😎"
 
     },
@@ -63,7 +63,7 @@
     "custom/notify": { 
         "format": "󰂚",
         "on-click": "exec swaync-client -t -sw",
-        "tooltip": "true",
+        "tooltip": false,
         "tooltip-format": "Notificações"
     }
 

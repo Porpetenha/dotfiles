@@ -40,6 +40,11 @@ declare -A APP_TARGETS=(
     ["waybar"]="style.css config.jsonc"
     ["rofi"]="colors.rasi"
     ["swaync"]="style.css config.json"
+    ["dunst"]="dunstrc"
+    ["eww"]="_variables.scss"
+    ["gtk-3.0"]="settings.ini"
+    ["gtk-4.0"]="settings.ini"
+    
 )
 
 # 4. DEFINIÇÃO DE ALVOS "ROOT" (FORA DO DOTFILES_DIR)
@@ -65,38 +70,42 @@ run_theme_commands() {
     local theme_folder_name=$1
     echo "Executando comandos específicos do tema..."
 
-    # Use um 'case' para rodar comandos baseados no tema
+    # Define o caminho do arquivo de configuração do hyprpaper
+    local hypr_conf="$HOME/dotfiles/hypr/hyprpaper.conf"
+
     case "$theme_folder_name" in
         "catppuccin-mocha")
             echo "  > Executando 'sed' para VS Code (Catppuccin)..."
             sed -i 's/"workbench.colorTheme":.*/"workbench.colorTheme": "Catppuccin Mocha",/' "$HOME/.config/Code/User/settings.json"
             
             echo "  > Aplicando wallpaper do Catppuccin..."
-            sed -i "s#^\(preload = \).*#\1$HOME/dotfiles/themes/catppuccin-mocha/catppuccin-tree.jpg#" "$HOME/dotfiles/hypr/hyprpaper.conf"
-            sed -i "s#^\(wallpaper = , \).*#\1$HOME/dotfiles/themes/catppuccin-mocha/catppuccin-tree.jpg#" "$HOME/dotfiles/hypr/hyprpaper.conf"
+            local img_cat="$HOME/dotfiles/themes/catppuccin-mocha/catppuccin-tree.jpg"
+            # Atualiza o preload (se existir)
+            sed -i "s|^preload = .*|preload = $img_cat|" "$hypr_conf"
+            # Atualiza o path dentro do bloco wallpaper { ... }
+            sed -i "s|path = .*|path = $img_cat|" "$hypr_conf"
 
-            echo "  > Executando 'sed' para o Obsidian (Catppuccin)..."
+            echo "  > Executando 'sed' seguro para o Obsidian (Catppuccin)..."
             find "$HOME" -type f -path "*/.obsidian/appearance.json" 2>/dev/null | while read -r obsidian_config; do
-                sed -i 's/"cssTheme":.*/"cssTheme": "Catppuccin"/' "$obsidian_config"
+                sed -i 's/\("cssTheme": "\)[^"]*/\1Catppuccin/' "$obsidian_config"
                 echo "    - Atualizado: $obsidian_config"
             done
-            # Adicione outros comandos do Catppuccin aqui
             ;;
 
         "tokyo-night-storm")
-            notify-send -i ~/dotfiles/themes/tokyo-night-storm/icon.svg "Alterando o tema" "Tokyo-Night Storm"
             echo "  > Executando 'sed' para VS Code (Tokyo Night)..."
             sed -i 's/"workbench.colorTheme":.*/"workbench.colorTheme": "Tokyo Night Storm",/' "$HOME/.config/Code/User/settings.json"
 
             echo "  > Aplicando wallpaper do Tokyo Night..."
-            sed -i "s#^\(preload = \).*#\1$HOME/dotfiles/themes/tokyo-night-storm/tokyo-kanagawa.jpg#" "$HOME/dotfiles/hypr/hyprpaper.conf"
-            sed -i "s#^\(wallpaper = , \).*#\1$HOME/dotfiles/themes/tokyo-night-storm/tokyo-kanagawa.jpg#" "$HOME/dotfiles/hypr/hyprpaper.conf"
+            local img_tokyo="$HOME/dotfiles/themes/tokyo-night-storm/tokyo-kanagawa.jpg"
+            sed -i "s|^preload = .*|preload = $img_tokyo|" "$hypr_conf"
+            sed -i "s|path = .*|path = $img_tokyo|" "$hypr_conf"
 
             echo "  > Executando 'sed' para o Obsidian (Tokyo Night)..."
             find "$HOME" -type f -path "*/.obsidian/appearance.json" 2>/dev/null | while read -r obsidian_config; do
-                sed -i 's/"cssTheme":.*/"cssTheme": "Tokyo Night"/' "$obsidian_config"
+                sed -i 's/\("cssTheme": "\)[^"]*/\1Tokyo Night/' "$obsidian_config"
                 echo "    - Atualizado: $obsidian_config"
-            done    
+            done 
 
             echo " > Alterando o tema do sistema..."
             gsettings set org.gnome.desktop.interface gtk-theme "Tokyonight-Dark-Storm"
@@ -104,21 +113,20 @@ run_theme_commands() {
             gsettings set org.gnome.desktop.interface icon-theme "Papirus-Dark"
             nohup papirus-folders -C red --theme Papirus-Dark >/dev/null 2>&1 &
             hyprctl setcursor Future-cyan-cursors 24
-            # Adicione outros comandos do Tokyo Night aqui
             ;;
         
         "gruvbox-dark")
-           #notify-send -i ~/dotfiles/themes/tokyo-night-storm/icon.svg "Alterando o tema" "Tokyo-Night Storm"
             echo "  > Executando 'sed' para VS Code (Gruvbox)..."
             sed -i 's/"workbench.colorTheme":.*/"workbench.colorTheme": "Gruvbox Dark Medium",/' "$HOME/.config/Code/User/settings.json"
             
             echo "  > Aplicando wallpaper do Gruvbox..."
-            sed -i "s#^\(preload = \).*#\1$HOME/dotfiles/themes/gruvbox-dark/gruvbox_astro.jpg#" "$HOME/dotfiles/hypr/hyprpaper.conf"
-            sed -i "s#^\(wallpaper = , \).*#\1$HOME/dotfiles/themes/gruvbox-dark/gruvbox_astro.jpg#" "$HOME/dotfiles/hypr/hyprpaper.conf"
+            local img_gruv="$HOME/dotfiles/themes/gruvbox-dark/gruvbox-astro.jpg"
+            sed -i "s|^preload = .*|preload = $img_gruv|" "$hypr_conf"
+            sed -i "s|path = .*|path = $img_gruv|" "$hypr_conf"
 
             echo "  > Executando 'sed' para o Obsidian (Gruvbox)..."
             find "$HOME" -type f -path "*/.obsidian/appearance.json" 2>/dev/null | while read -r obsidian_config; do
-                sed -i 's/"cssTheme":.*/"cssTheme": "Obsidian gruvbox"/' "$obsidian_config"
+                sed -i 's/\("cssTheme": "\)[^"]*/\1Obsidian gruvbox/' "$obsidian_config"
                 echo "    - Atualizado: $obsidian_config"
             done
             
@@ -128,11 +136,8 @@ run_theme_commands() {
             gsettings set org.gnome.desktop.interface icon-theme "Papirus-Dark"
             nohup papirus-folders -C brown --theme Papirus-Dark >/dev/null 2>&1 &
             hyprctl setcursor Future-cursors 24
-            
-            # Adicione outros comandos do Gruvbox aqui
             ;;
         *)
-            # Este 'case' é para o caso de um tema não ter comandos
             echo "  [Info] Nenhum comando específico para este tema."
             ;;
     esac
@@ -199,6 +204,7 @@ reload_services() {
     
     (killall -SIGUSR1 kitty &) >/dev/null 2>&1
     (hyprctl reload &) >/dev/null 2>&1
+    (eww r &) >/dev/null 2>&1
 
     # --- EXEMPLOS PARA ADICIONAR DEPOIS ---
     

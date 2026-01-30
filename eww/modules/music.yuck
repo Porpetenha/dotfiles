@@ -30,7 +30,7 @@
             (label :class "spotify-time-current" :halign "start" :text {spotify_position > 0 ? "${round(spotify_position / 60, 0)}:${spotify_position % 60 < 10 ? '0' : ''}${round(spotify_position % 60, 0)}" : "0:00"})
             (label :class "spotify-time-total" :halign "end" :text {spotify_length > 0 ? "${round(spotify_length / 60, 0)}:${spotify_length % 60 < 10 ? '0' : ''}${round(spotify_length % 60, 0)}" : "0:00"})))
         ;; Controles
-        (box :class "spotify-controls" :orientation "h" :space-evenly true :halign "center" :spacing 15
+        (box :class "spotify-controls" :orientation "h" :space-evenly true :halign "fill" :hexpand true :spacing 15
           (button :class "spotify-btn shuffle" :cursor "pointer" :onclick "playerctl -p spotify shuffle toggle" :tooltip "Aleatório" "󰒝")
           (button :class "spotify-btn" :onclick "playerctl -p spotify previous" :tooltip "Anterior" "󰒮")
           (button :class "spotify-btn play-pause" :onclick "playerctl -p spotify play-pause" :tooltip {spotify_status == "Playing" ? "Pausar" : "Tocar"} {spotify_status == "Playing" ? "󰏤" : "󰐊"})

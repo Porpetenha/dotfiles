@@ -96,7 +96,7 @@ window#waybar.hidden {
 }
 
 #clock:hover {
-    color: @fg;
+    color: @bg;
     background-color: @green;
 }
 
@@ -154,3 +154,4 @@ window#waybar.hidden {
 @define-color fg2 #d5c4a1;
 @define-color fg1 #ebdbb2;
 @define-color fg0 #fbf1c7;
+

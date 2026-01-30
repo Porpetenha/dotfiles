@@ -1,0 +1,57 @@
+;; ============================================================
+;;  VARS
+;; ============================================================
+
+;; Voltamos para defvar. O script Python vai rodar 'eww update notifications=...'
+(defvar notifications "[]")
+
+;; ============================================================
+;;  WIDGETS
+;; ============================================================
+
+(defwidget notification-card [notif]
+  (box :class "notif-card" :orientation "h" :space-evenly false :spacing 10
+    ;; Ícone (Só renderiza se o path não for vazio)
+    (box :class "notif-icon-box" :space-evenly false
+         :visible {notif.icon != "null" && notif.icon != ""}
+      (image :path {notif.icon}
+             :image-width 64
+             :image-height 64
+             :class "notif-icon")
+    )
+
+    ;; Conteúdo
+    (box :orientation "v" :space-evenly false :hexpand true
+      (box :class "notif-header" :orientation "h" :space-evenly true
+        (label :class "app-name" :text {notif.app} :halign "start")
+        (label :class "time" :text {notif.time} :halign "end")
+      )
+      (label :class "summary" :text {notif.summary} :halign "start" :limit-width 30 :wrap true)
+      (label :class "body" :text {notif.body} :halign "start" :limit-width 100 :wrap true)
+    )
+  )
+)
+
+(defwidget notification-list []
+  (box :orientation "v" :space-evenly false :class "notif-container"
+    (for notif in notifications
+      (eventbox :onclick "scripts/close_notif.sh ${notif.id}"
+        (notification-card :notif notif)
+      )
+    )
+  )
+)
+
+;; ============================================================
+;;  WINDOW
+;; ============================================================
+
+(defwindow not-popup
+  :monitor 0
+  :geometry (geometry :x "0px"
+                      :y "0px"
+                      :width "400px"
+                      :anchor "top right")
+  :stacking "overlay"
+  (notification-list))
+

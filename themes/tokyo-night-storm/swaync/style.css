@@ -1,12 +1,20 @@
 @import "/home/porpetenha/dotfiles/themes/tokyo-night-storm/swaync/tokyo.css";
 
-@define-color text            @white;
-@define-color background1     @slate;
+@define-color text            #c0caf5;
+@define-color background1     #414868;
 @define-color background-alt  #214556;
 @define-color selected        @color6;
 @define-color hover           alpha(@selected, .4);
 @define-color urgent          @color2;
-@define-color border          @white
+@define-color border          #c0caf5;
+
+
+:root{
+
+  --radius: 5px;
+  --margin: 1px 7px 0px 0px;
+  --border: 2px solid #c0caf5;
+}
 
 * {
   color:@text;
@@ -27,9 +35,10 @@
 
 .control-center {
   background: @background1;
-  border-radius: 5px;
-  border: 1px solid @selected;
+  border-radius: var(--radius);
+  border: var(--border);
   box-shadow: 0 0 10px 0 rgba(0,0,0,.6);
+  margin: var(--margin);
   padding: 12px;
 }
 
@@ -193,10 +202,9 @@ progressbar {
 .floating-notifications.background .notification-row .notification-background {
   background: @background1;
   box-shadow: 0 0 8px 0 rgba(0,0,0,.6);
-  border: 2px solid @border;
-  border-radius: 5px;
-  margin-top: 9px;
-  margin-right: 13px;
+  border: var(--border);
+  border-radius: var(--radius);
+  margin: var(--margin);
   padding: 0;
 }
 
@@ -272,3 +280,4 @@ progressbar {
 .notification.normal progress {
   background-color: @selected;
 }
+

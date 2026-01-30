@@ -24,9 +24,9 @@ window#waybar.hidden {
 #custom-os_button {
     background-color: @background;
     color: @blue;
-    padding: 0 12px;
+    padding: 0 6px;
     border: 2px solid @blue;
-    border-radius: 9px;
+    border-radius: 10px;
     margin-left: 5px;
     transition: box-shadow 0.3s ease; 
 }
@@ -34,9 +34,9 @@ window#waybar.hidden {
 #custom-notify {
     background-color: @background;
     color: @yellow;
-    padding: 0 12px;
+    padding: 0 6px;
     border: 2px solid @yellow;
-    border-radius: 9px;
+    border-radius: 10px;
     margin-right: 5px;
     transition: box-shadow 0.3s ease;
 }
@@ -44,34 +44,37 @@ window#waybar.hidden {
 #clock {
     background-color: @background;
     color: @green;
-    padding: 0 10px;
-    padding: 0 12px;
+    padding: 0 6px;
     border: 2px solid @green;
-    border-radius: 9px;
+    border-radius: 10px;
     transition: box-shadow 0.3s ease;
 }
 
 #workspaces {
     background-color: @background;
-    padding: 0 10px;
+    padding: 0 6px;
     border: 2px solid @red;
-    border-radius: 9px;
+    border-radius: 10px;
 }
 
 #workspaces button.persistent {
     color: @orange;
+    padding: 0 5px;
 }
 
 #workspaces button.empty {
     color: @white;
+    padding: 0 5px;
 }
 
 #workspaces button.active {
     color: @red;
+    padding: 0 5px;
 }
 
 #workspaces button.urgent {
     color: @red;
+    padding: 0 5px;
 }
 
 

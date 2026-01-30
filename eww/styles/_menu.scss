@@ -1,0 +1,129 @@
+.main-panel {
+  border: solid 2px $fg;
+  border-radius: $border;
+  background-color: $bg;
+  padding: 0px 10px;
+  margin: $margin_menu
+}
+
+.profile-box{
+  background-color: $bg1;
+  border-radius: 10px;
+  margin: 10px 0px 10px 0px;
+}
+
+.profile-pic {
+  padding: 5px 0px;
+}
+
+.pacman-box{
+  background-color: $bg2;
+  border-radius: 10px;
+}
+
+.pacman-icon{
+  background-color: $bg1;
+  border-radius: 10px;
+  margin: 5px 5px;
+  padding-right: 10px;
+  font-size: 50px;
+  color: $yellow;
+}
+
+.pacman-stats{
+  background-color: $bg1;
+  border-radius: 10px;
+  margin: 5px 5px 5px 0px;
+}
+
+.uptime{
+  background-color: $bg1;
+  border-radius: 10px;
+  margin: 10px 0px;
+}
+
+.power-buttons{
+  background-color: $bg2;
+  border-radius: 10px;
+  padding: 5px 5px;
+  margin: 0px 0px 10px 0px;
+}
+
+$power-buttons: (
+  'shutdown': $red,
+  'reboot': $orange,
+  'lock': $yellow,
+  'suspend': $green,
+  'exit': $blue
+);
+
+@each $name, $accent in $power-buttons {
+  .#{$name} {
+    background-color: $bg1;
+    border-radius: 10px;
+    padding: 0px 0px;
+    transition: all 0.2s;
+    
+    &:hover {
+      background-color: $accent;
+    }
+    
+    & label {
+      color: $accent;
+    }
+    
+    &:hover label {
+      color: $fg;
+    }
+  }
+}
+
+.vol-icon, .br-icon {
+  margin-right: 15px;
+}
+
+.vol, .br{
+  background-color: $bg1;
+  border-radius: 10px;
+  margin: 0px 0px 10px 0px;
+  padding: 5px 10px;
+
+  scale {
+    min-width: 150px; 
+    min-height: 5px;
+    
+    trough {
+      min-width: 150px;
+      min-height: 5px;
+      background-color: $bg2;
+      border-radius: 5px;
+    }
+    
+    highlight {
+      border-radius: 5px;
+    }
+    
+    slider {
+      min-width: 10px;
+      min-height: 10px;
+      background-color: $fg;
+      border-radius: 50%;
+    }
+  }
+}
+
+.vol {
+  scale{
+      highlight {
+      background-color: $blue;
+    }
+  }
+}
+
+.br {
+  scale{
+      highlight {
+      background-color: $yellow;
+    }
+  }
+}

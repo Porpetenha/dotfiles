@@ -8,6 +8,12 @@
 @define-color urgent          @red;
 @define-color border          @fg;
 
+:root{
+  --radius: 0px;
+  --margin: 5px 5px;
+  --border: 2px solid @border;
+}
+
 * {
   color:@text;
 
@@ -15,7 +21,6 @@
   font-size: 14px;
   font-family: "JetBrains Mono Nerd Font 10";
   transition: 200ms;
-
 }
 
 /* Avoid 'annoying' backgroud */
@@ -27,10 +32,10 @@
 
 .control-center {
   background: @background1;
-  border-radius:0px;
-  border: 2px solid @border;
+  border-radius: var(--radius);
+  border: var(--border);
   box-shadow: 0 0 10px 0 rgba(0,0,0,.6);
-  margin: 0px;
+  margin: var(--margin);
   padding: 12px;
 }
 
@@ -194,10 +199,9 @@ progressbar {
 .floating-notifications.background .notification-row .notification-background {
   background: @background1;
   box-shadow: 0 0 8px 0 rgba(0,0,0,.6);
-  border: 2px solid @border;
-  border-radius: 0px;
-  margin-top: 9px;
-  margin-right: 10px;
+  border: var(--border);
+  border-radius: var(--radius);
+  margin: var(--margin);
   padding: 0;
 }
 

@@ -24,10 +24,9 @@
 
 (include "modules/calendar.yuck")
 (include "modules/menu.yuck")
-(include "modules/bar.yuck")
 (include "modules/music.yuck")
+(include "modules/notification.yuck")
 
-  
 (defwindow bg-closer
   :monitor 0
   :geometry (geometry :width "100%" :height "100%")

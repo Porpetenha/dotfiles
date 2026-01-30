@@ -1,0 +1,56 @@
+// Container geral
+.notif-container {
+  // Não use gap ou border-spacing aqui. O espaçamento é controlado pelo Eww yuck.
+  padding: $margin_menu; 
+}
+
+// O Cartão
+.notif-card {
+  background-color: $bg;
+  border: 2px solid $fg;
+  border-radius: $border;
+  padding: 0px;
+  margin-bottom: 8px; // Use margin-bottom para separar os cards
+  color: $fg;
+}
+
+// Hover (opcional, só funciona se o widget for eventbox interativo)
+.notif-card:hover {
+  background-color: #313244;
+  border-color: #89b4fa;
+}
+
+// Ícone
+.notif-icon {
+  // border-radius não funciona diretamente na widget 'image' do GTK em alguns casos
+  // mas funciona se estiver dentro de uma box com clip.
+  background-color: transparent;
+  margin-right: 15px;
+  margin-left: 15px;
+}
+
+// Textos
+.app-name {
+  color: $fg;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.time {
+  color: $fg;
+  font-size: 12px;
+  padding-right: 5px;
+}
+
+.summary {
+  color: $fg;
+  font-weight: 800;
+  font-size: 16px;
+  margin-top: 5px;
+}
+
+.body {
+  color: $fg;
+  font-size: 14px;
+  margin-top: 5px;
+}

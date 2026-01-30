@@ -1,0 +1,60 @@
+.calendar {
+    border: none;
+    background-color: transparent;
+    margin-top: $margin_clock;
+}
+
+.cal-box {
+    border: solid 2px $fg;
+    background-color: $bg;
+    border-radius: $border;
+    padding: 10px 10px;
+}
+
+.clock {
+    background-color: $bg1;
+    border-radius: 10px;
+    font-size: 30px;
+}
+
+.cal {
+  font-weight: normal;
+  background-color: $bg1;
+  border-radius: 10px;
+  padding: 0px 3px;
+
+  .cal-in {
+    padding: 0px 0px;
+
+    .cal {
+      &.highlight {
+        padding: 20px;
+      }
+      border: none;
+    }
+  }
+}
+
+calendar:selected {
+  color: $green;
+  border: none;
+  font-weight: bold;
+}
+
+calendar:indeterminate {
+  color: $fg1;
+  border: none;
+}
+
+.weather {
+    background-color: $bg1;
+    border-radius: 10px;
+}
+
+.weather-desc {
+    font-size: 13px;
+}
+
+.weather-icon {
+    font-size: 40px;
+}

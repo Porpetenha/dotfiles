@@ -1,12 +1,10 @@
-@import "/home/porpetenha/dotfiles/themes/gruvbox-dark/swaync/gruvbox.css";
-
-@define-color text            @fg;
-@define-color background1     @bg;
-@define-color background-alt  @blue;
-@define-color selected        @base;
+@define-color text            #ebdbb2;
+@define-color background1     #282828;
+@define-color background-alt  #458588;
+@define-color selected        #689d6a;
 @define-color hover           alpha(@selected, .4);
-@define-color urgent          @red;
-@define-color border          @fg;
+@define-color urgent          #cc241d;
+@define-color border          #ebdbb2;
 
 :root{
   --radius: 0px;
@@ -21,6 +19,38 @@
   font-size: 14px;
   font-family: "JetBrains Mono Nerd Font 10";
   transition: 200ms;
+}
+
+/* Labels gerais */
+label {
+  color: @text;
+}
+
+/* Título dos widgets */
+.widget-title,
+.widget-title > label {
+  color: @text;
+}
+
+/* Widget DND */
+.widget-dnd,
+.widget-dnd > label {
+  color: @text;
+}
+
+/* Headers de grupos de notificação */
+.notification-group-headers,
+.notification-group-headers > label {
+  color: @text;
+}
+
+/* Textos das notificações */
+.summary,
+.body,
+.notification-content,
+.notification-content > *,
+.notification label {
+  color: @text;
 }
 
 /* Avoid 'annoying' backgroud */

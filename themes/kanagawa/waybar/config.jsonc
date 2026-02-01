@@ -3,8 +3,8 @@
     "layer": "top", // Waybar at top layer
     "position": "top", // Waybar position (top|bottom|left|right)
     "height": 0, // Waybar height (to be removed for auto height)
-    "width": 1920, // Waybar width
-    "margin": 0,
+    "width": 1910, // Waybar width
+    "margin": 1,
     //"spacing": 4, // Gaps between modules (4px)
     
     // Choose the order of the modules
@@ -36,34 +36,15 @@
         "modules": [
             "tray",
             //"custom/music",
-            //"custom/notify",
+            "custom/notify",
             "custom/os_button"
-        ]
-    },
-
-    "group/center2": {
-        "orientation": "horizontal",
-        "modules": [
-            "clock"
-        ]
-    },
-
-    "group/right2": {
-        "orientation": "horizontal",
-        "modules": [
-            //"custom/brightness",
-            "custom/volume",
-            "tray",
-            //"custom/music",
-            //"custom/notify",
-            "custom/os_button2"
         ]
     },
 
 //Modules
 
     "custom/os_button": {
-        "format":"󰣇",
+        "format":"[󰣇]",
         "on-click": "eww c menu || eww o menu",
         "on-click-right": "rofi -show drun",
         "tooltip": false,
@@ -74,7 +55,12 @@
     "hyprland/workspaces": {
         "format": "{icon}",
         "format-icons": {
-            "urgent": "󰀨"
+            "urgent": "󰀨",
+            "1": "[1]",
+            "2": "[2]",
+            "3": "[3]",
+            "4": "[4]",
+            "5": "[5]"
         },
     	"on-scroll-up": "hyprctl dispatch workspace e+1",
     	"on-scroll-down": "hyprctl dispatch workspace e-1",
@@ -91,7 +77,7 @@
 
     "clock": {
         "timezone": "America/Sao_Paulo",
-        "format": "{:%H:%M} 󰥔",
+        "format": "[{:%H:%M} 󰥔]",
         "tooltip": false,
         "on-click": "eww c calendar || eww o calendar",
         "tooltip-format": "<tt>{calendar}</tt>",
@@ -108,7 +94,7 @@
     },
 
     "custom/notify": { 
-        "format": "󰂚",
+        "format": "[󰂚]",
         "on-click": "exec swaync-client -t -sw",
         "tooltip": false,
         "tooltip-format": ""
@@ -129,15 +115,7 @@
         "on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
         "on-scroll-up": "pactl set-sink-volume @DEFAULT_SINK@ +5%",
         "on-scroll-down": "pactl set-sink-volume @DEFAULT_SINK@ -5%"
-    },
-
-    "custom/os_button2": {
-        "format":"󰣇",
-        "on-click-right": "rofi -show drun",
-        "tooltip": false,
-        "tooltip-format": "btw 😎"
-
-    },
+    }
 
 }
 

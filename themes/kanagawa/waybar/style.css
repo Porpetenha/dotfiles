@@ -1,0 +1,172 @@
+* {
+    /* `otf-font-awesome` is required to be installed for icons */
+    font-family: JetBrainsMono Nerd Font Propo, Roboto, Helvetica, Arial, sans-serif;
+    font-size: 16px;
+    font-weight: bold;
+    margin: 0px;
+    padding: 0px;
+}
+
+window#waybar {
+    background: @bg;
+    transition-property: background-color;
+    transition-duration: .5s;
+    border: 2px solid @selection_fg;
+}
+
+window#waybar.hidden {
+    opacity: 0.2;
+}
+
+#custom-os_button{
+    color: @bright_blue;
+    transition: all 0.2s;
+    border-bottom: 2px solid @bright_blue; 
+    margin: 2px 5px 5px 0px;
+
+}
+
+#custom-notify {
+    color: @bright_yellow;
+    border-bottom: 2px solid @bright_yellow; 
+    transition: all 0.2s;
+    margin: 2px 5px 5px 0px;
+}
+
+#custom-music {
+    color: @aqua;
+    padding: 0 6px;
+    transition: all 0.2s;
+}
+
+#clock {
+    color: @bright_green;
+    padding: 0 0px;
+    transition: all 0.2s;
+    border-bottom: 2px solid @bright_green; 
+    margin: 2px 0px 5px 0px;
+}
+
+#tray {
+    border: 2px solid @orange;
+}
+
+#workspaces {
+
+}
+
+#workspaces button {
+    transition: all 0.2s;
+    padding: 0 0px;
+    border-radius: 0px;
+}
+
+#workspaces button.persistent {
+    color: @orange;
+    border-radius: 0px;
+    border-bottom: 2px solid @orange;
+    margin: 2px 2px 5px 2px;
+}
+
+#workspaces button.empty {
+    color: @fg;
+    border-radius: 0px;
+    border-bottom: 2px solid @fg; 
+    margin: 2px 2px 5px 2px;
+}
+
+#workspaces button.active {
+    color: @red;
+    border-radius: 0px;
+    border-bottom: 2px solid @red; 
+    margin: 2px 2px 5px 2px;
+}
+
+#workspaces button.urgent {
+    color: @red;
+    border-radius: 0px;
+    border-bottom: 2px solid @red; 
+    margin: 2px 2px 5px 2px;
+}
+
+/* If workspaces is the leftmost module, omit left margin */
+.modules-left > widget:first-child > #workspaces {
+    margin-left: 5;
+}
+
+/* If workspaces is the rightmost module, omit right margin */
+.modules-right > widget:last-child > #workspaces {
+    margin-right: 0;
+}
+
+/* Hover effects */
+
+#custom-os_button:hover,
+#custom-notify:hover,
+#custom-music:hover,
+#clock:hover {
+    color: @fg;
+    border-color: @fg;
+}
+
+#workspaces button.persistent:hover,
+#workspaces button.empty:hover,
+#workspaces button.active:hover,
+#workspaces button.urgent:hover {
+    color: @fg;
+    border-color: @fg;
+}
+
+tooltip {
+    border: 1px solid @fg;
+    border-radius: 0px;
+}
+
+@define-color fg #dcd7ba;
+@define-color bg #1f1f28;
+@define-color selection_fg #c8c093;
+@define-color selection_bg #2d4f67;
+
+@define-color cursor #c8c093;
+@define-color url #72a7bc;
+
+@define-color active_tab_fg #c8c093;
+@define-color active_tab_bg #1f1f28;
+@define-color inactive_tab_fg #727169;
+@define-color inactive_tab_bg #1f1f28;
+
+/* Preto */
+@define-color black #16161d;
+@define-color bright_black #727169;
+
+/* Vermelho */
+@define-color red #c34043;
+@define-color bright_red #e82424;
+
+/* Verde */
+@define-color green #76946a;
+@define-color bright_green #98bb6c;
+
+/* Amarelo */
+@define-color yellow #c0a36e;
+@define-color bright_yellow #e6c384;
+
+/* Azul */
+@define-color blue #7e9cd8;
+@define-color bright_blue #7fb4ca;
+
+/* Magenta */
+@define-color magenta #957fb8;
+@define-color bright_magenta #938aa9;
+
+/* Ciano */
+@define-color cyan #6a9589;
+@define-color bright_cyan #7aa89f;
+
+/* Branco */
+@define-color white #c8c093;
+@define-color bright_white #dcd7ba;
+
+/* Cores extras */
+@define-color orange #ffa066;
+@define-color extra_red #ff5d62;

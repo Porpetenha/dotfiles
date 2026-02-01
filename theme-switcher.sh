@@ -22,6 +22,7 @@ THEME_NAMES=(
     "Catppuccin Mocha"
     "Tokyo Night Storm"
     "Gruvbox Dark"
+    "Kanagawa"
     # Adicione novos nomes de exibição aqui.
 )
 
@@ -29,6 +30,7 @@ declare -A THEMES=(
     ["Catppuccin Mocha"]="catppuccin-mocha"
     ["Tokyo Night Storm"]="tokyo-night-storm"
     ["Gruvbox Dark"]="gruvbox-dark"
+    ["Kanagawa"]="kanagawa"
     #Adicione novos mapeamentos aqui.
 )
 
@@ -75,17 +77,17 @@ run_theme_commands() {
 
     case "$theme_folder_name" in
         "catppuccin-mocha")
-            echo "  > Executando 'sed' para VS Code (Catppuccin)..."
+            echo "  > Executando 'sed' para VS Code ($selected_display_name)..."
             sed -i 's/"workbench.colorTheme":.*/"workbench.colorTheme": "Catppuccin Mocha",/' "$HOME/.config/Code/User/settings.json"
             
-            echo "  > Aplicando wallpaper do Catppuccin..."
+            echo "  > Aplicando wallpaper do $selected_display_name..."
             local img_cat="$HOME/dotfiles/themes/catppuccin-mocha/catppuccin-tree.jpg"
             # Atualiza o preload (se existir)
             sed -i "s|^preload = .*|preload = $img_cat|" "$hypr_conf"
             # Atualiza o path dentro do bloco wallpaper { ... }
             sed -i "s|path = .*|path = $img_cat|" "$hypr_conf"
 
-            echo "  > Executando 'sed' seguro para o Obsidian (Catppuccin)..."
+            echo "  > Executando 'sed' seguro para o Obsidian ($selected_display_name..."
             find "$HOME" -type f -path "*/.obsidian/appearance.json" 2>/dev/null | while read -r obsidian_config; do
                 sed -i 's/\("cssTheme": "\)[^"]*/\1Catppuccin/' "$obsidian_config"
                 echo "    - Atualizado: $obsidian_config"
@@ -93,15 +95,15 @@ run_theme_commands() {
             ;;
 
         "tokyo-night-storm")
-            echo "  > Executando 'sed' para VS Code (Tokyo Night)..."
+            echo "  > Executando 'sed' para VS Code ($selected_display_name)..."
             sed -i 's/"workbench.colorTheme":.*/"workbench.colorTheme": "Tokyo Night Storm",/' "$HOME/.config/Code/User/settings.json"
 
-            echo "  > Aplicando wallpaper do Tokyo Night..."
+            echo "  > Aplicando wallpaper do $selected_display_name..."
             local img_tokyo="$HOME/dotfiles/themes/tokyo-night-storm/tokyo-kanagawa.jpg"
             sed -i "s|^preload = .*|preload = $img_tokyo|" "$hypr_conf"
             sed -i "s|path = .*|path = $img_tokyo|" "$hypr_conf"
 
-            echo "  > Executando 'sed' para o Obsidian (Tokyo Night)..."
+            echo "  > Executando 'sed' para o Obsidian ($selected_display_name)..."
             find "$HOME" -type f -path "*/.obsidian/appearance.json" 2>/dev/null | while read -r obsidian_config; do
                 sed -i 's/\("cssTheme": "\)[^"]*/\1Tokyo Night/' "$obsidian_config"
                 echo "    - Atualizado: $obsidian_config"
@@ -116,15 +118,15 @@ run_theme_commands() {
             ;;
         
         "gruvbox-dark")
-            echo "  > Executando 'sed' para VS Code (Gruvbox)..."
+            echo "  > Executando 'sed' para VS Code ($selected_display_name)..."
             sed -i 's/"workbench.colorTheme":.*/"workbench.colorTheme": "Gruvbox Dark Medium",/' "$HOME/.config/Code/User/settings.json"
             
-            echo "  > Aplicando wallpaper do Gruvbox..."
+            echo "  > Aplicando wallpaper do $selected_display_name..."
             local img_gruv="$HOME/dotfiles/themes/gruvbox-dark/gruvbox-astro.jpg"
             sed -i "s|^preload = .*|preload = $img_gruv|" "$hypr_conf"
             sed -i "s|path = .*|path = $img_gruv|" "$hypr_conf"
 
-            echo "  > Executando 'sed' para o Obsidian (Gruvbox)..."
+            echo "  > Executando 'sed' para o Obsidian ($selected_display_name)..."
             find "$HOME" -type f -path "*/.obsidian/appearance.json" 2>/dev/null | while read -r obsidian_config; do
                 sed -i 's/\("cssTheme": "\)[^"]*/\1Obsidian gruvbox/' "$obsidian_config"
                 echo "    - Atualizado: $obsidian_config"
@@ -137,7 +139,31 @@ run_theme_commands() {
             nohup papirus-folders -C brown --theme Papirus-Dark >/dev/null 2>&1 &
             hyprctl setcursor Future-cursors 24
             ;;
+
+        "kanagawa")
+            echo "  > Executando 'sed' para VS Code ($selected_display_name)..."
+            sed -i 's/"workbench.colorTheme":.*/"workbench.colorTheme": "Kanagawa",/' "$HOME/.config/Code/User/settings.json"
+            
+            echo "  > Aplicando wallpaper do $selected_display_name..."
+            local img_gruv="$HOME/dotfiles/themes/kanagawa/kanagawa.jpg"
+            sed -i "s|^preload = .*|preload = $img_gruv|" "$hypr_conf"
+            sed -i "s|path = .*|path = $img_gruv|" "$hypr_conf"
+
+            echo "  > Executando 'sed' para o Obsidian ($selected_display_name)..."
+            find "$HOME" -type f -path "*/.obsidian/appearance.json" 2>/dev/null | while read -r obsidian_config; do
+                sed -i 's/\("cssTheme": "\)[^"]*/\1Kanagawa/' "$obsidian_config"
+                echo "    - Atualizado: $obsidian_config"
+            done
+            
+            echo " > Alterando o tema do sistema..."
+            gsettings set org.gnome.desktop.interface gtk-theme "Kanagawa"
+            gsettings set org.gnome.desktop.interface cursor-theme "Moga-Sandy"
+            gsettings set org.gnome.desktop.interface icon-theme "Papirus-Dark"
+            nohup papirus-folders -C paleorange --theme Papirus-Dark >/dev/null 2>&1 &
+            hyprctl setcursor Moga-Sandy 24
+            ;;
         *)
+
             echo "  [Info] Nenhum comando específico para este tema."
             ;;
     esac

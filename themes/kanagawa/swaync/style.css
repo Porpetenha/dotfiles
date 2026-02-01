@@ -1,29 +1,23 @@
-@import "/home/porpetenha/dotfiles/themes/tokyo-night-storm/swaync/tokyo.css";
-
-@define-color text            #c0caf5;
-@define-color background1     #414868;
-@define-color background-alt  #214556;
-@define-color selected        @color6;
+@define-color text            #dcd7ba;
+@define-color background1     #1f1f28;
+@define-color background-alt  #2d4f67;
+@define-color selected        #7e9cd8;
 @define-color hover           alpha(@selected, .4);
-@define-color urgent          @color2;
-@define-color border          #c0caf5;
-
+@define-color urgent          #c34043;
+@define-color border          #dcd7ba;
 
 :root{
-
-  --radius: 5px;
-  --margin: 1px 7px 0px 0px;
-  --border: 2px solid #c0caf5;
+  --radius: 0px;
+  --margin: 2px 5px;
+  --border: 2px solid @border;
 }
 
 * {
   color:@text;
-
   all: unset;
   font-size: 14px;
   font-family: "JetBrains Mono Nerd Font 10";
   transition: 200ms;
-
 }
 
 /* Labels gerais */
@@ -312,4 +306,3 @@ progressbar {
 .notification.normal progress {
   background-color: @selected;
 }
-

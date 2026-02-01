@@ -1,0 +1,13 @@
+* {
+    background:     #1f1f28;
+    background-alt: #363646;
+    foreground:     #dcd7ba;
+    selected:       #7fb4ca;
+    active:         #98bb6c;
+    urgent:         #c34043;
+}
+
+
+window {
+    border-radius: 0px;
+}

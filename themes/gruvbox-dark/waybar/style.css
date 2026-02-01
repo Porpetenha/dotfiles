@@ -15,11 +15,14 @@ window#waybar.hidden {
     opacity: 0.2;
 }
 
-#custom-os_button {
+#custom-os_button,
+#custom-os_button2 {
     color: @blue;
     padding: 0 6px;
     transition: all 0.2s;
 }
+
+
 
 #custom-notify {
     color: @yellow;
@@ -80,7 +83,8 @@ window#waybar.hidden {
 
 /* Hover effects */
 
-#custom-os_button:hover {
+#custom-os_button:hover,
+#custom-os_button2:hover {
     color: @fg;
     background-color: @blue;
 }
@@ -124,6 +128,10 @@ window#waybar.hidden {
     border-radius: 0px;
 }
 
+tooltip {
+    border: 1px solid @fg;
+    border-radius: 0px;
+}
 @define-color red #cc241d;
 @define-color green #98971a;
 @define-color yellow #d79921;
@@ -155,3 +163,9 @@ window#waybar.hidden {
 @define-color fg1 #ebdbb2;
 @define-color fg0 #fbf1c7;
 
+#custom-volume {
+    padding: 0 10px;
+    color: @orange;
+    background-color: #282828;
+    margin: 5px;
+}

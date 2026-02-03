@@ -160,7 +160,7 @@ run_theme_commands() {
             gsettings set org.gnome.desktop.interface cursor-theme "Moga-Sandy"
             gsettings set org.gnome.desktop.interface icon-theme "Papirus-Dark"
             nohup papirus-folders -C paleorange --theme Papirus-Dark >/dev/null 2>&1 &
-            hyprctl setcursor Moga-Sandy 24
+            hyprctl setcursor Moga-Sandy 20
             ;;
         *)
 

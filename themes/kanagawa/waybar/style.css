@@ -48,7 +48,9 @@ window#waybar.hidden {
 }
 
 #tray {
-    border: 2px solid @orange;
+    border-bottom: 2px solid @orange;
+    margin: 5px 5px 5px 0px;
+    padding: 2px;
 }
 
 #workspaces {

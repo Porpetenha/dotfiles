@@ -28,39 +28,52 @@ Quando o script é executado basta selecionar o numero correspondente ao tema e 
 | Notifys        | SwayNC      |
 | Widgets        | EWW         |
 | Shell Prompt   | Starship    |
+| File Menager   | Thunar      |
 
 ---
 ## 📸 Screenshots
 
 ### Tokyo Night
 
+![Apresentatiom](pics/tokyo-night/apresentation.png)
+
 ![Overview](pics/tokyo-night/overview.png)
 
-Rofi
+![Eww](pics/tokyo-night/eww.png)
 
-Swaync
+![Rofi-app_launcher](pics/tokyo-night/rofi-app_launcher.png)
+![Rofi-power_menu](pics/tokyo-night/rofi-power_menu.png)
 
-Eww
+![Notify](pics/tokyo-night/notify.png)
+![Swaync](pics/tokyo-night/swaync.png)
 
 ### Gruvbox
 
-Overview
+![Apresentatiom](pics/gruvbox/apresentation.png)
 
-Rofi
+![Overview](pics/gruvbox/overview.png)
 
-Swaync
+![Eww](pics/gruvbox/eww.png)
 
-Eww
+![Rofi-app_launcher](pics/gruvbox/rofi-app_launcher.png)
+![Rofi-power_menu](pics/gruvbox/rofi-power_menu.png)
 
-### Kanagawa
+![Notify](pics/gruvbox/notify.png)
+![Swaync](pics/gruvbox/swaync.png)
 
-Overview
+### Tokyo Night
 
-Rofi
+![Apresentatiom](pics/kanagawa/apresentation.png)
 
-Swaync
+![Overview](pics/kanagawa/overview.png)
 
-Eww
+![Eww](pics/kanagawa/eww.png)
+
+![Rofi-app_launcher](pics/kanagawa/rofi-app_launcher.png)
+![Rofi-power_menu](pics/kanagawa/rofi-power_menu.png)
+
+![Notify](pics/kanagawa/notify.png)
+![Swaync](pics/kanagawa/swaync.png)
 
 ---
 

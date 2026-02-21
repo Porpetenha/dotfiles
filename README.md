@@ -9,11 +9,12 @@ O script foi escrito por uma IA (Gemini), precisando de vez ou outra de interven
 
 Quando o script é executado basta selecionar o numero correspondente ao tema e aguardar alguns segundos para finalizar. Existe também um meno com o Rofi para alterar, a keybind configurada é o `SUPER + L`.
 
-- [**Tokyo-Night**](#Tokyo-Night): 
-- [**Gruvbox**](#Gruvbox):
-- [**Kanagawa**](#Kanagawa):
+- [**Tokyo-Night**](#Tokyo-Night): Azul com estetica neon;
+- [**Gruvbox**](#Gruvbox): Tons terrosos;
+- [**Kanagawa**](#Kanagawa): Azul marinho e; 
+- [**Catppucin-Mocha**](#Catppucin-Mocha): Em breve.
 
-
+![Demo](assets/demo.gif)
 ---
 ## 🛠️ Componentes do Sistema
 
@@ -33,48 +34,44 @@ Quando o script é executado basta selecionar o numero correspondente ao tema e 
 
 ### Tokyo Night
 
-![Apresentatiom](pics/tokyo-night/apresentation.png)
+![Apresentatiom](assets/tokyo-night/apresentation.png)
 
-![Overview](pics/tokyo-night/overview.png)
+![Overview](assets/tokyo-night/overview.png)
 
-![Eww](pics/tokyo-night/eww.png)
+![Eww](assets/tokyo-night/eww.png)
 
-![Rofi-app_launcher](pics/tokyo-night/rofi-app_launcher.png)
-![Rofi-power_menu](pics/tokyo-night/rofi-power_menu.png)
+![Rofi-app_launcher](assets/tokyo-night/rofi-app_launcher.png)
+![Rofi-power_menu](assets/tokyo-night/rofi-power_menu.png)
 
-![Notify](pics/tokyo-night/notify.png)
-![Swaync](pics/tokyo-night/swaync.png)
+![Notify](assets/tokyo-night/notify.png)
+![Swaync](assets/tokyo-night/swaync.png)
 
 ### Gruvbox
 
-![Apresentatiom](pics/gruvbox/apresentation.png)
+![Apresentatiom](assets/gruvbox/apresentation.png)
 
-![Overview](pics/gruvbox/overview.png)
+![Overview](assets/gruvbox/overview.png)
 
-![Eww](pics/gruvbox/eww.png)
+![Eww](assets/gruvbox/eww.png)
 
-![Rofi-app_launcher](pics/gruvbox/rofi-app_launcher.png)
-![Rofi-power_menu](pics/gruvbox/rofi-power_menu.png)
+![Rofi-app_launcher](assets/gruvbox/rofi-app_launcher.png)
+![Rofi-power_menu](assets/gruvbox/rofi-power_menu.png)
 
-![Notify](pics/gruvbox/notify.png)
-![Swaync](pics/gruvbox/swaync.png)
+![Notify](assets/gruvbox/notify.png)
+![Swaync](assets/gruvbox/swaync.png)
 
-### Tokyo Night
+### Kanagawa
 
-![Apresentatiom](pics/kanagawa/apresentation.png)
+![Apresentatiom](assets/kanagawa/apresentation.png)
 
-![Overview](pics/kanagawa/overview.png)
+![Overview](assets/kanagawa/overview.png)
 
-![Eww](pics/kanagawa/eww.png)
+![Eww](assets/kanagawa/eww.png)
 
-![Rofi-app_launcher](pics/kanagawa/rofi-app_launcher.png)
-![Rofi-power_menu](pics/kanagawa/rofi-power_menu.png)
+![Rofi-app_launcher](assets/kanagawa/rofi-app_launcher.png)
+![Rofi-power_menu](assets/kanagawa/rofi-power_menu.png)
 
-![Notify](pics/kanagawa/notify.png)
-![Swaync](pics/kanagawa/swaync.png)
+![Notify](assets/kanagawa/notify.png)
+![Swaync](assets/kanagawa/swaync.png)
 
 ---
-
-  
-
-**Arch Linux** | **Hyprland** | **Wayland** | **Rice**

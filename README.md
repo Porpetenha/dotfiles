@@ -1,59 +1,81 @@
 # My Dotfiles Hyprland
-
 ---
 ## 🎨 Dynamic Themes
 
-Através do script `theme-switcher.sh`, é possível alternar globalmente entre diferentes estéticas que modificam os principais componentes da configuração. Sendo assim, é muito fácil criar novas configurações de ricing. 
+Through the `theme-switcher.sh` script, it is possible to globally switch between different aesthetics that modify the main components of the configuration. Therefore, it is very easy to create new ricing setups. 
 
-O script foi escrito por uma IA (Gemini), precisando de vez ou outra de intervenção manual para configurações adicionais. 
+The script was written by an AI (Gemini), occasionally requiring manual intervention for additional configurations. 
 
-Quando o script é executado basta selecionar o numero correspondente ao tema e aguardar alguns segundos para finalizar. Existe também um meno com o Rofi para alterar, a keybind configurada é o `SUPER + L`.
+When the script is executed, simply select the number corresponding to the theme and wait a few seconds for it to finish. There is also a Rofi menu to change it; the configured keybind is `SUPER + L`.
 
-- [**Tokyo-Night**](#Tokyo-Night): Azul com estetica neon;
-- [**Gruvbox**](#Gruvbox): Tons terrosos e cores vibrantes;
-- [**Kanagawa**](#Kanagawa): Azul marinho e branco areia; 
-- [**Catppucin-Mocha**](#Catppucin-Mocha): Em breve.
+<div align="center">
+  <img src="themes/tokyo-night-storm/icon.svg" width="50">
+  <br>
+  <a href="#tokyo-night"><b>Tokyo-Night</b></a><br>
+  Blue with a neon aesthetic;
+</div>
+<p>
+<div align="center">
+  <img src="themes/tokyo-night-storm/icon.svg" width="50">
+  <br>
+  <a href="#gruvbox"><b>Gruvbox</b></a><br>
+  Earthy tones and vibrant colors;
+</div>
+<p>
+<div align="center">
+  <img src="themes/tokyo-night-storm/icon.svg" width="50">
+  <br>
+  <a href="#kanagawa"><b>Kanagawa</b></a><br>
+  Navy blue and sand white; 
+</div>
+<p>
 
 ![Demo](assets/demo.gif)
 
 ---
-## 🛠️ Componentes do Sistema
+## 🛠️ Components
 
-| **Componente** | **Pacotes** |
-| -------------- | ----------- |
-| Window Manager | Hyprland    |
-| Status Bar     | Waybar      |
-| Terminal       | Kitty       |
-| App Launcher   | Rofi        |
-| Notifys        | SwayNC      |
-| Widgets        | EWW         |
-| Shell Prompt   | Starship    |
-| File Menager   | Thunar      |
+### Packages
 
-## Icones e temas
+| **Component** | **Packages** |
+| ------------- | ------------ |
+| Window Manager| Hyprland     |
+| Status Bar    | Waybar       |
+| Terminal      | Kitty        |
+| App Launcher  | Rofi         |
+| Notifys       | SwayNC       |
+| Widgets       | EWW          |
+| Shell Prompt  | Starship     |
+| File Manager  | Thunar       |
+
+### Icons and Themes
 
 - Tokyo-Night
-    - Icons: Papirus (Red Folder)
+    - Icon: Papirus (Red Folder)
     - Cursor: [Moga-Negon-Blue](https://www.pling.com/p/2302110)
-    - GTK Theme: [Tokyonight GTK Theme - Dark-Storm-BL-MB](https://www.pling.com/p/1681315/)(Thunar modification)
+    - GTK Theme: [Tokyonight GTK Theme - Dark-Storm-BL-MB](https://www.pling.com/p/1681315/) (Thunar modification)
+    - VS Code Theme: [Tokyo Night](https://marketplace.visualstudio.com/items?itemName=enkia.tokyo-night)
 
 - Gruvbox
-    - Icone: Papirus (Brown Folder)
+    - Icon: Papirus (Brown Folder)
     - Cursor: [Future-cursors](https://www.pling.com/p/1457141)
-    - GTK Theme: [Gruvbox GTK Theme - Dark-BL-MB](https://www.pling.com/p/1681313/)(Thunar modification)
+    - GTK Theme: [Gruvbox GTK Theme - Dark-BL-MB](https://www.pling.com/p/1681313/) (Thunar modification)
+    - VS Code Theme: [Gruvbox Theme](https://marketplace.visualstudio.com/items?itemName=jdinhlife.gruvbox)
 
 - Kanagawa
-    - Icone: Papirus (Paleorange Folder)
+    - Icon: Papirus (Paleorange Folder)
     - Cursor: [Moga-Sandy](https://www.pling.com/p/2297654)
-    - GTK Theme: [Kanagawa GTK Theme - Dark-BL-MB ](https://www.pling.com/p/1810560)(Thunar modification)
+    - GTK Theme: [Kanagawa GTK Theme - Dark-BL-MB ](https://www.pling.com/p/1810560) (Thunar modification)
+    - VS Code Theme: [Kanagawa](https://marketplace.visualstudio.com/items?itemName=qufiwefefwoyn.kanagawa) 
 
-Autor dos temas GTK: [Fausto-Korpsvart](https://github.com/Fausto-Korpsvart)
+GTK themes author: [Fausto-Korpsvart](https://github.com/Fausto-Korpsvart)
+
 ---
 ## 📸 Screenshots
 
 ### Tokyo Night
 
-![Apresentatiom](assets/tokyo-night/apresentation.png)
+![Presentation](assets/tokyo-night/apresentation.png)
 
 ![Overview](assets/tokyo-night/overview.png)
 
@@ -67,7 +89,7 @@ Autor dos temas GTK: [Fausto-Korpsvart](https://github.com/Fausto-Korpsvart)
 
 ### Gruvbox
 
-![Apresentatiom](assets/gruvbox/apresentation.png)
+![Presentation](assets/gruvbox/apresentation.png)
 
 ![Overview](assets/gruvbox/overview.png)
 
@@ -81,7 +103,7 @@ Autor dos temas GTK: [Fausto-Korpsvart](https://github.com/Fausto-Korpsvart)
 
 ### Kanagawa
 
-![Apresentatiom](assets/kanagawa/apresentation.png)
+![Presentation](assets/kanagawa/apresentation.png)
 
 ![Overview](assets/kanagawa/overview.png)
 

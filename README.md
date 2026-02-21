@@ -33,19 +33,19 @@ Quando o script é executado basta selecionar o numero correspondente ao tema e 
 ## Icones e temas
 
 - Tokyo-Night
- - Icons: Papirus (Red Folder)
- - Cursor: [Moga-Negon-Blue](https://www.pling.com/p/2302110)
- - GTK Theme: [Tokyonight GTK Theme - Dark-Storm-BL-MB](https://www.pling.com/p/1681315/)(Thunar modification)
+    - Icons: Papirus (Red Folder)
+    - Cursor: [Moga-Negon-Blue](https://www.pling.com/p/2302110)
+    - GTK Theme: [Tokyonight GTK Theme - Dark-Storm-BL-MB](https://www.pling.com/p/1681315/)(Thunar modification)
 
 - Gruvbox
- - Icone: Papirus (Brown Folder)
- - Cursor: [Future-cursors](https://www.pling.com/p/1457141)
- - GTK Theme: [Gruvbox GTK Theme - Dark-BL-MB](https://www.pling.com/p/1681313/)(Thunar modification)
+    - Icone: Papirus (Brown Folder)
+    - Cursor: [Future-cursors](https://www.pling.com/p/1457141)
+    - GTK Theme: [Gruvbox GTK Theme - Dark-BL-MB](https://www.pling.com/p/1681313/)(Thunar modification)
 
 - Kanagawa
- - Icone: Papirus (Paleorange Folder)
- - Cursor: [Moga-Sandy](https://www.pling.com/p/2297654)
- - GTK Theme: [Kanagawa GTK Theme - Dark-BL-MB ](https://www.pling.com/p/1810560)(Thunar modification)
+    - Icone: Papirus (Paleorange Folder)
+    - Cursor: [Moga-Sandy](https://www.pling.com/p/2297654)
+    - GTK Theme: [Kanagawa GTK Theme - Dark-BL-MB ](https://www.pling.com/p/1810560)(Thunar modification)
 
 Autor dos temas GTK: [Fausto-Korpsvart](https://github.com/Fausto-Korpsvart)
 ---

@@ -15,6 +15,7 @@ Quando o script é executado basta selecionar o numero correspondente ao tema e 
 - [**Catppucin-Mocha**](#Catppucin-Mocha): Em breve.
 
 ![Demo](assets/demo.gif)
+
 ---
 ## 🛠️ Componentes do Sistema
 

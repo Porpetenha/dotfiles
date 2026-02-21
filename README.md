@@ -9,13 +9,11 @@ O script foi escrito por uma IA (Gemini), precisando de vez ou outra de interven
 
 Quando o script é executado basta selecionar o numero correspondente ao tema e aguardar alguns segundos para finalizar. Existe também um meno com o Rofi para alterar, a keybind configurada é o `SUPER + L`.
 
-- Tokyo-Night: .
+- [**Tokyo-Night**](#Tokyo-Night): 
+- [**Gruvbox**](#Gruvbox):
+- [**Kanagawa**](#Kanagawa):
 
-- **Gruvbox Dark** 🪵: O equilíbrio perfeito entre o retro e o conforto visual.
 
-- **Tokyo Night Storm** ⚡: Estética vibrante inspirada nas noites tecnológicas de Tóquio.
-
-- 
 ---
 ## 🛠️ Componentes do Sistema
 

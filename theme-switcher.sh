@@ -19,7 +19,7 @@ THEMES_DIR="$DOTFILES_DIR/themes"
 
 # 2. DEFINIÇÃO DOS TEMAS
 THEME_NAMES=(
-    "Catppuccin Mocha"
+    #"Catppuccin Mocha"
     "Tokyo Night Storm"
     "Gruvbox Dark"
     "Kanagawa"
@@ -27,7 +27,7 @@ THEME_NAMES=(
 )
 
 declare -A THEMES=(
-    ["Catppuccin Mocha"]="catppuccin-mocha"
+    #["Catppuccin Mocha"]="catppuccin-mocha"
     ["Tokyo Night Storm"]="tokyo-night-storm"
     ["Gruvbox Dark"]="gruvbox-dark"
     ["Kanagawa"]="kanagawa"
@@ -111,10 +111,10 @@ run_theme_commands() {
 
             echo " > Alterando o tema do sistema..."
             gsettings set org.gnome.desktop.interface gtk-theme "Tokyonight-Dark-Storm"
-            gsettings set org.gnome.desktop.interface cursor-theme "Future-cyan-cursors"
+            gsettings set org.gnome.desktop.interface cursor-theme "Moga-Neon-Blue"
             gsettings set org.gnome.desktop.interface icon-theme "Papirus-Dark"
             nohup papirus-folders -C red --theme Papirus-Dark >/dev/null 2>&1 &
-            hyprctl setcursor Future-cyan-cursors 24
+            hyprctl setcursor Moga-Neon-Blue 20
             ;;
         
         "gruvbox-dark")
@@ -138,6 +138,17 @@ run_theme_commands() {
             gsettings set org.gnome.desktop.interface icon-theme "Papirus-Dark"
             nohup papirus-folders -C brown --theme Papirus-Dark >/dev/null 2>&1 &
             hyprctl setcursor Future-cursors 24
+
+            echo "  > Aplicando tema ($selected_display_name) ao Firefox..."
+            local ff_css="$HOME/.mozilla/firefox/dneohqj6.default-release/chrome/userContent.css"
+            local ff_bg="#282828" 
+            
+            if [ -f "$ff_css" ]; then
+                sed -i "s/--bg: #[0-9A-Fa-f]\{6\};/--bg: $ff_bg;/g" "$ff_css"
+                echo "    - Atualizado: $ff_css"
+            else
+                echo "    - [!] Erro: Arquivo userContent.css não encontrado."
+            fi
             ;;
 
         "kanagawa")
@@ -161,6 +172,17 @@ run_theme_commands() {
             gsettings set org.gnome.desktop.interface icon-theme "Papirus-Dark"
             nohup papirus-folders -C paleorange --theme Papirus-Dark >/dev/null 2>&1 &
             hyprctl setcursor Moga-Sandy 20
+
+            echo "  > Aplicando tema ($selected_display_name) ao Firefox..."
+            local ff_css="$HOME/.mozilla/firefox/dneohqj6.default-release/chrome/userContent.css"
+            local ff_bg="#1C1C22" 
+            
+            if [ -f "$ff_css" ]; then
+                sed -i "s/--bg: #[0-9A-Fa-f]\{6\};/--bg: $ff_bg;/g" "$ff_css"
+                echo "    - Atualizado: $ff_css"
+            else
+                echo "    - [!] Erro: Arquivo userContent.css não encontrado."
+            fi
             ;;
         *)
 

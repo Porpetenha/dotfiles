@@ -22,4 +22,4 @@ numero=$(echo "$opcoes" | grep -F "$escolha" | sed 's/^  \([0-9]*\).*/\1/')
 echo "$numero" | bash "$THEMER_SCRIPT"
 
 # Notificação
-notify-send "Tema Aplicado" "O tema $escolha foi aplicado!" -i preferences-desktop-theme
+notify-send "Tema Aplicado" "O tema $escolha foi aplicado!" 

@@ -19,6 +19,7 @@
 .pacman-box{
   background-color: $bg2;
   border-radius: 10px;
+  margin-bottom: 10px;
 }
 
 .pacman-icon{
@@ -39,15 +40,29 @@
 .uptime{
   background-color: $bg1;
   border-radius: 10px;
-  margin: 10px 0px;
+  margin: 0px 0px;
+}
+
+.cpu, .ram{
+  background-color: $bg1;
+  border-radius: 10px;
+
+    &:hover {
+      background-color: $fg;
+    }
+
+    &:hover label {
+      color: $bg1;
+    }
 }
 
 .power-buttons{
   background-color: $bg2;
   border-radius: 10px;
   padding: 5px 5px;
-  margin: 0px 0px 10px 0px;
+  margin: 10px 0px 10px 0px;
 }
+
 
 $power-buttons: (
   'shutdown': $red,

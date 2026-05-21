@@ -36,10 +36,10 @@
             "keyColor": "33",
         },
         {
-            "type": "packages",
-            "format": "{} (pacman)",
+            "type": "command",
             "key": "PKG ",
-            "keyColor": "34",  
+            "keyColor": "34",
+            "text": "echo \"$(pacman -Qq | wc -l) (pacman) | $(flatpak list --app | wc -l) (flatpak)\""
         },
         {
             "type": "shell",

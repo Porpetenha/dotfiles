@@ -1,1 +1,126 @@
-../themes/kanagawa/waybar/config.jsonc
+// -*- mode: jsonc -*-
+{
+    "layer": "top", // Waybar at top layer
+    "position": "top", // Waybar position (top|bottom|left|right)
+    "height": 0, // Waybar height (to be removed for auto height)
+    "width": 1910, // Waybar width
+    "margin": 1,
+    "margin-top": 3,
+    //"spacing": 4, // Gaps between modules (4px)
+    
+    // Choose the order of the modules
+
+    "modules-left": [ 
+        "hyprland/workspaces"
+    ],
+
+    "modules-center": [ 
+        "group/center1"
+    ],
+
+    "modules-right": [
+        "group/right1"
+    ],
+
+//Groups
+
+    "group/center1": {
+        "orientation": "horizontal",
+        "modules": [
+            "clock"
+        ]
+    },
+
+    "group/right1": {
+        "orientation": "horizontal",
+        "modules": [
+            //"memory",
+            "tray",
+            //"custom/music",
+            "custom/notify",
+            "custom/os_button"
+        ]
+    },
+
+//Modules
+
+    "custom/os_button": {
+        "format":"[󰣇]",
+        "on-click": "eww c menu || eww o menu",
+        "on-click-right": "rofi -show drun",
+        "tooltip": false,
+        "tooltip-format": "btw 😎"
+
+    },
+
+    "hyprland/workspaces": {
+        "format": "{icon}",
+        "format-icons": {
+            "urgent": "󰀨",
+            "1": "[1]",
+            "2": "[2]",
+            "3": "[3]",
+            "4": "[4]",
+            "5": "[5]"
+        },
+    	"on-scroll-up": "hyprctl dispatch workspace e+1",
+    	"on-scroll-down": "hyprctl dispatch workspace e-1",
+		"persistent-workspaces": {
+		"*":5
+		}
+    },
+
+    "tray": {
+        //"icon-size": 21,
+        "spacing": 10,
+        "tooltip": false
+    },
+
+    "clock": {
+        "timezone": "America/Sao_Paulo",
+        "format": "[{:%H:%M} 󰥔]",
+        "tooltip": false,
+        "on-click": "eww c calendar || eww o calendar",
+        "tooltip-format": "<tt>{calendar}</tt>",
+        "calendar": {
+            "mode": "year",
+            "mode-mon-col": 3,
+            "format": {
+                 "months": "<span color='#d79921'><b>{}</b></span>",
+                 "days": "<span color='#ebdbb2'><b>{}</b></span>",
+                 "weekdays": "<span color='#98971a'><b>{}</b></span>",
+                 "today": "<span color='#cc241d'><b><u>{}</u></b></span>"           
+            }
+        }
+    },
+
+    "custom/notify": { 
+        "format": "[󰂚]",
+        "on-click": "exec swaync-client -t -sw",
+        "tooltip": false,
+        "tooltip-format": ""
+    },
+
+    "custom/music": { 
+        "format": "",
+        "on-click": "eww c spotify-widget || eww o spotify-widget",
+        "tooltip": false,
+        "tooltip-format": ""
+    },
+
+    "custom/volume": {
+        "exec": "~/.config/waybar/scripts/volume.sh",
+        "return-type": "json",
+        "interval": 1,
+        "on-click-right": "pavucontrol",
+        "on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
+        "on-scroll-up": "pactl set-sink-volume @DEFAULT_SINK@ +5%",
+        "on-scroll-down": "pactl set-sink-volume @DEFAULT_SINK@ -5%"
+    },
+
+    "memory": {
+    "interval": 5,
+    "format": "[ {}% {used:0.1f}G/{total:0.1f}G  ]"
+    }
+
+}

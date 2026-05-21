@@ -38,7 +38,7 @@ declare -A THEMES=(
 # 3. DEFINIÇÃO DOS ALVOS (APLICATIVOS DENTRO DE DOTFILES)
 declare -A APP_TARGETS=(
     ["kitty"]="colors.conf"
-    ["hypr"]="look-and-feel.conf hyprlock.conf themes.conf"
+    ["hypr"]="look-and-feel.lua hyprlock.conf themes.lua"
     ["waybar"]="style.css config.jsonc"
     ["rofi"]="colors.rasi"
     ["swaync"]="style.css config.json"
@@ -134,10 +134,10 @@ run_theme_commands() {
             
             echo " > Alterando o tema do sistema..."
             gsettings set org.gnome.desktop.interface gtk-theme "Gruvbox-Dark-Medium"
-            gsettings set org.gnome.desktop.interface cursor-theme "Future-cursors"
+            gsettings set org.gnome.desktop.interface cursor-theme "Simp1e-Gruvbox-Dark"
             gsettings set org.gnome.desktop.interface icon-theme "Papirus-Dark"
             nohup papirus-folders -C brown --theme Papirus-Dark >/dev/null 2>&1 &
-            hyprctl setcursor Future-cursors 24
+            hyprctl setcursor Simp1e-Gruvbox-Dark 24
 
             echo "  > Aplicando tema ($selected_display_name) ao Firefox..."
             local ff_css="$HOME/.mozilla/firefox/dneohqj6.default-release/chrome/userContent.css"
@@ -248,47 +248,59 @@ apply_theme() {
 
 # Função para recarregar serviços
 reload_services() {
-    echo "Recarregando serviços..."
+    echo "Recarregando serviços de forma eficiente..."
     
-    (killall -SIGUSR1 kitty &) >/dev/null 2>&1
-    (hyprctl reload &) >/dev/null 2>&1
-    (eww r &) >/dev/null 2>&1
+    # 1. RECARREGAMENTO QUENTE (Sem matar processos)
+    # ---------------------------------------------------------
+    killall -SIGUSR1 kitty >/dev/null 2>&1    # Recarrega o terminal
+    killall -SIGUSR2 waybar >/dev/null 2>&1   # Recarrega config/css do Waybar
+    swaync-client -rs >/dev/null 2>&1         # Recarrega o CSS do swaync
+    swaync-client -R >/dev/null 2>&1          # Recarrega o config do swaync
+    hyprctl reload >/dev/null 2>&1            # Recarrega o Hyprland
+    eww r >/dev/null 2>&1                     # Recarrega o Eww
 
-    # --- EXEMPLOS PARA ADICIONAR DEPOIS ---
-    
-    # 1. Mata o waybar. O '|| true' garante que o script
-    #    não pare se o waybar não estiver rodando.
-    (killall waybar || true) &>/dev/null
-    (killall hyprpaper || true) &>/dev/null
-    (killall swaync || true) &>/dev/null
-    # 2. Espera um instante para o processo morrer
+    # 2. REINICIALIZAÇÃO FORÇADA (Para o que não aceita sinal)
+    # ---------------------------------------------------------
+    # Lista de aplicativos que realmente precisam fechar e abrir
+    APPS_PARA_REINICIAR=("hyprpaper")
+
+    for app in "${APPS_PARA_REINICIAR[@]}"; do
+        # Tenta matar o processo de forma silenciosa
+        killall "$app" >/dev/null 2>&1
+    done
+
+    # Espera um instante para garantir que todos morreram
     sleep 0.2
-    
-    # 3. Inicia o waybar em background, totalmente desanexado.
-    #    'nohup' impede que ele morra com o terminal.
-    #    '>/dev/null 2>&1' descarta toda a saída (logs).
-    #    '&' coloca em background.
-    (nohup waybar >/dev/null 2>&1 &)
-    (nohup hyprpaper >/dev/null 2>&1 &)
-    (nohup swaync >/dev/null 2>&1 &)
+
+    for app in "${APPS_PARA_REINICIAR[@]}"; do
+        # Inicia em background e desanexa do terminal
+        "$app" >/dev/null 2>&1 & disown
+    done
     
     echo "Serviços recarregados."
 }
 
-# Função principal (menu)
+# Função principal
 main() {
-    echo "Qual tema você gostaria de aplicar?"
-    
-    for i in "${!THEME_NAMES[@]}"; do
-        echo "  $((i+1)). ${THEME_NAMES[$i]}"
-    done
+    # Pega o primeiro argumento passado para o script (ex: o "1" em "ts 1")
+    local choice_num=$1
 
-    read -p "Sua escolha (1-${#THEME_NAMES[@]}): " choice_num
+    # Se a variável choice_num estiver vazia, mostra o menu interativo
+    if [ -z "$choice_num" ]; then
+        echo "Qual tema você gostaria de aplicar?"
+        
+        for i in "${!THEME_NAMES[@]}"; do
+            echo "  $((i+1)). ${THEME_NAMES[$i]}"
+        done
 
+        read -p "Sua escolha (1-${#THEME_NAMES[@]}): " choice_num
+    fi
+
+    # Validação (funciona tanto para o menu quanto para o argumento direto)
     if ! [[ "$choice_num" =~ ^[0-9]+$ ]] || \
        (( choice_num < 1 )) || \
        (( choice_num > ${#THEME_NAMES[@]} )); then
-        echo "Erro: Escolha inválida."
+        echo "Erro: Escolha inválida. Por favor, escolha um número de 1 a ${#THEME_NAMES[@]}."
         exit 1
     fi
 
@@ -305,6 +317,5 @@ main() {
     echo "Tema $selected_display_name aplicado com sucesso!"
 }
 
-# Executa a função principal
-main
-
+# Passa todos os argumentos recebidos no terminal para a função main
+main "$@"

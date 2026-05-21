@@ -10,7 +10,12 @@
 				(label :class "packges" :text "${pacman-packages} 󰏓" )
 				(label :class "updates" :text "${pacman-updates} ")))
 		;Stats menu
-				(label :class "uptime" :halign "fill" :text "up: ${system-uptime}")
+		(box :orientation "v" :space-evenly false :spacing 10
+				(label :class "uptime" :halign "fill" :text "up: ${system-uptime} 󰔟")
+				(eventbox :class "ram" :cursor "pointer" :halign "fill" :onclick "~/.config/eww/scripts/toggle_waybar.sh memory"
+					(label  :text "${round(EWW_RAM.used_mem_perc, 0)}% - ${round(EWW_RAM.used_mem / 1073741824, 1)} G/${round(EWW_RAM.total_mem / 1073741824, 1)} G "))
+				(eventbox :class "cpu" :cursor "pointer" :halign "fill" :onclick "~/.config/eww/scripts/toggle_waybar.sh cpu"
+					(label :text "${round(EWW_CPU.avg, 0)}% - ${round(EWW_CPU.cores[0].freq /1000, 2)} GHz ")))
 		;Power menu
 		(box :class "power-buttons" :orientation "h" :spacing 5
 			(eventbox :class "shutdown" :cursor "pointer" :onclick "systemctl poweroff" (label :text "⏻"))

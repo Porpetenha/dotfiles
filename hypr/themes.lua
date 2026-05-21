@@ -1,0 +1,1 @@
+../themes/kanagawa/hypr/themes.lua

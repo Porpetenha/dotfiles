@@ -53,6 +53,20 @@ window#waybar.hidden {
     padding: 2px;
 }
 
+#memory {
+    color: @bright_green;
+    border-bottom: 2px solid @bright_green; 
+    transition: all 0.2s;
+    margin: 2px 5px 5px 0px;
+}
+
+#cpu {
+    color: @red;
+    border-bottom: 2px solid @bright_red; 
+    transition: all 0.2s;
+    margin: 2px 5px 5px 0px;
+}
+
 #workspaces {
 
 }
@@ -106,7 +120,9 @@ window#waybar.hidden {
 #custom-os_button:hover,
 #custom-notify:hover,
 #custom-music:hover,
-#clock:hover {
+#clock:hover,
+#memory:hover,
+#cpu:hover {
     color: @fg;
     border-color: @fg;
 }

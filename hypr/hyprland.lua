@@ -75,7 +75,10 @@ hl.env("QT_QPA_PLATFORM" , "wayland;xcb")
 hl.env("QT_QPA_PLATFORMTHEME", "qt6ct")
 hl.env("QT_WAYLAND_DISABLE_WINDOWDECORATION", "1")
 
-hl.env("XDG_MENU_PREFIX", "arch- ")
+hl.env("XDG_MENU_PREFIX", "arch-")
+
+hl.env("GTK_IM_MODULE", "cedilla")
+hl.env("QT_IM_MODULE", "cedilla")
 
 -----------------------
 ----- PERMISSIONS -----
@@ -171,7 +174,7 @@ hl.bind(mainMod .. " + I", hl.dsp.exec_cmd("python ~/Documentos/demo.py"))
 hl.bind(mainMod .. " + J", hl.dsp.layout("togglesplit"))    -- dwindle only
 hl.bind(mainMod .. " + F", hl.dsp.window.float({ action = "toggle" }))
 --hl.bind(mainMod .. " + P", hl.dsp.window.pseudo())
---wwhl.bind(mainMod .. " + SPACE", hl.dsp.window.fullscreen({mode = "maximize", action = "toggle"}))
+hl.bind(mainMod .. " + SPACE", hl.dsp.window.fullscreen({mode = "maximized", action = "toggle"}))
 hl.bind(mainMod .. " + SHIFT + SPACE", hl.dsp.window.fullscreen({mode = "fullscreen", action = "toggle"}))
 
 -- Move focus with mainMod + arrow keys

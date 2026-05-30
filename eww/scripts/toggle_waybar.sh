@@ -22,12 +22,12 @@ fi
 # 4. O interruptor usando o layout exato do seu arquivo
 if grep -q "//\"$MODULO\"," "$CONFIG"; then
     # Remove as barras
-    sed -i "s|//\"$MODULO\",|\"$MODULO\",|g" "$CONFIG"
+    sed --follow-symlinks -i "s|//\"$MODULO\",|\"$MODULO\",|g" "$CONFIG"
     echo "[OK] Módulo $MODULO ATIVADO no arquivo $(basename "$CONFIG")!"
     
 elif grep -q "\"$MODULO\"," "$CONFIG"; then
     # Adiciona as barras
-    sed -i "s|\"$MODULO\",|//\"$MODULO\",|g" "$CONFIG"
+    sed --follow-symlinks -i "s|\"$MODULO\",|//\"$MODULO\",|g" "$CONFIG"
     echo "[OK] Módulo $MODULO DESATIVADO no arquivo $(basename "$CONFIG")!"
     
 else

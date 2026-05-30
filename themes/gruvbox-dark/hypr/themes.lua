@@ -1,0 +1,11 @@
+-- Variáveis de Ambiente (Cursores e Temas)
+hl.env("HYPRCURSOR_SIZE", "24")
+hl.env("HYPRCURSOR_THEME", "Simp1e-Gruvbox-Dark")
+hl.env("XCURSOR_SIZE", "24")
+hl.env("XCURSOR_THEME", "Simp1e-Gruvbox-Dark")
+hl.env("GTK_THEME", "Gruvbox-Dark-Medium ")
+
+-- Execução na Inicialização (Autostart)
+hl.on("hyprland.start", function ()
+    hl.exec_cmd("hyprctl setcursor imp1e-Gruvbox-Dark 24")
+end)

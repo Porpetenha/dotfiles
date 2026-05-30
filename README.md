@@ -16,14 +16,14 @@ When the script is executed, simply select the number corresponding to the theme
 </div>
 <p>
 <div align="center">
-  <img src="themes/tokyo-night-storm/icon.svg" width="50">
+  <img src="themes/gruvbox-dark/icon.svg" width="50">
   <br>
   <a href="#gruvbox"><b>Gruvbox</b></a><br>
   Earthy tones and vibrant colors;
 </div>
 <p>
 <div align="center">
-  <img src="themes/tokyo-night-storm/icon.svg" width="50">
+  <img src="themes/kanagawa/icon.svg" width="50">
   <br>
   <a href="#kanagawa"><b>Kanagawa</b></a><br>
   Navy blue and sand white; 

@@ -9,21 +9,21 @@ The script was written by an AI (Gemini), occasionally requiring manual interven
 When the script is executed, simply select the number corresponding to the theme and wait a few seconds for it to finish. There is also a Rofi menu to change it; the configured keybind is `SUPER + L`.
 
 <div align="center">
-  <img src="themes/tokyo-night-storm/icon.svg" width="50">
+  <img src="themes/tokyo-night-storm/icon.svg" width="140">
   <br>
   <a href="#tokyo-night"><b>Tokyo-Night</b></a><br>
   Blue with a neon aesthetic;
 </div>
 <p>
 <div align="center">
-  <img src="themes/gruvbox-dark/icon.svg" width="50">
+  <img src="themes/gruvbox-dark/icon.svg" width="140">
   <br>
   <a href="#gruvbox"><b>Gruvbox</b></a><br>
   Earthy tones and vibrant colors;
 </div>
 <p>
 <div align="center">
-  <img src="themes/kanagawa/icon.svg" width="50">
+  <img src="themes/kanagawa/icon.svg" width="140">
   <br>
   <a href="#kanagawa"><b>Kanagawa</b></a><br>
   Navy blue and sand white; 

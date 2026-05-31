@@ -11,18 +11,24 @@ temas_id = {
     "kanagawa": 3,
 }
 
+icon_path = {
+    1: "/home/porpetenha/dotfiles/themes/tokyo-night-storm/icon.svg",
+    2: "/home/porpetenha/dotfiles/themes/gruvbox-dark/icon.svg",
+    3: "/home/porpetenha/dotfiles/themes/kanagawa/icon.svg"
+}
+
 script_path = "/home/porpetenha/dotfiles/theme-switcher.sh"
 
 def screenshot(nome, tema):
     time.sleep(0.5)
-    subprocess.run(["grim", f"{tema}_{nome}.png"])
+    subprocess.run(["grim", f"/home/porpetenha/Imagens/rice/{tema}_{nome}.png"])
 
 def abrir_app(comando, tempo_espera):
     subprocess.Popen(comando)
     time.sleep(tempo_espera)
 
 def mover_foco(direcao):
-    subprocess.run(["hyprctl", "dispatch", "movefocus", direcao])
+    subprocess.run(["hyprctl", "dispatch", f'hl.dsp.focus({{ direction = "{direcao}" }})'])
 
 for tema in temas:
     id_atual = temas_id[tema]
@@ -48,7 +54,15 @@ for tema in temas:
     time.sleep(tempo_pre)
 
     subprocess.Popen("~/.config/rofi/scripts/wallpaper.sh", shell=True)
-    subprocess.Popen(["notify-send", "Hello", "<3"])
+    
+    nome_tema = tema.replace("_", " ").title()
+
+    subprocess.Popen([
+        "notify-send",
+        "-i", icon_path[id_atual],
+        f"Tema {nome_tema}",
+        "Hello <3"
+    ])
 
     screenshot("wallpaper_notify", tema)
 
@@ -58,7 +72,7 @@ for tema in temas:
 
     #----------------------------
     time.sleep(tempo_pre)
-
+ 
     subprocess.Popen("~/.config/rofi/scripts/powermenu.sh", shell=True)
     subprocess.Popen(["swaync-client", "-t", "-sw"])
 
@@ -82,17 +96,17 @@ for tema in temas:
     
     abrir_app(["env", f"GTK_THEME={tema_gtk_atual}", "thunar"], 1.5)
     abrir_app(["code", "dotfiles"], 3.0) 
-    mover_foco("l")
+    mover_foco("left")
     abrir_app(["obsidian"], 3.0)
-    mover_foco("r")
+    mover_foco("right")
     subprocess.Popen(["kitty", "sh", "-c", "fastfetch; exec bash"])
 
     screenshot("overview", tema)
     
     time.sleep(tempo_pos)
     
-    subprocess.run(["hyprctl", "dispatch", "closewindow", "class:code"])
-    subprocess.run(["hyprctl", "dispatch", "closewindow", "class:kitty"])
-    subprocess.run(["hyprctl", "dispatch", "closewindow", "class:obsidian"])
+    subprocess.run(["hyprctl", "dispatch", 'hl.dsp.window.close({ window = "class:code" })'])
+    subprocess.run(["hyprctl", "dispatch", 'hl.dsp.window.close({ window = "class:kitty" })'])
+    subprocess.run(["hyprctl", "dispatch", 'hl.dsp.window.close({ window = "class:obsidian" })'])
     subprocess.run(["killall", "-9", "thunar"])
     

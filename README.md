@@ -75,12 +75,26 @@ GTK themes author: [Fausto-Korpsvart](https://github.com/Fausto-Korpsvart)
 
 ### Tokyo Night
 
+![](assets/tokyo-night/tokyo_night_demo.png)
+![](assets/tokyo-night/tokyo_night_eww_rofi.png)
+![](assets/tokyo-night/tokyo_night_powermenu_swaync.png)
+![](assets/tokyo-night/tokyo_night_wallpaper_notify.png)
+![](assets/tokyo-night/tokyo_night_overview.png)
 
 ### Gruvbox
 
-
+![](assets/gruvbox/gruvbox_demo.png)
+![](assets/gruvbox/gruvbox_eww_rofi.png)
+![](assets/gruvbox/gruvbox_powermenu_swaync.png)
+![](assets/gruvbox/gruvbox_wallpaper_notify.png)
+![](assets/gruvbox/gruvbox_overview.png)
 
 ### Kanagawa
 
+![](assets/kanagawa/kanagawa_demo.png)
+![](assets/kanagawa/kanagawa_eww_rofi.png)
+![](assets/kanagawa/kanagawa_powermenu_swaync.png)
+![](assets/kanagawa/kanagawa_wallpaper_notify.png)
+![](assets/kanagawa/kanagawa_overview.png)
 
 ---

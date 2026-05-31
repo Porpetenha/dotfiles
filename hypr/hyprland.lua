@@ -168,7 +168,7 @@ hl.bind(mainMod .. " + P", hl.dsp.exec_cmd("hyprpicker -a"))
 hl.bind(mainMod .. "+ SHIFT + R", hl.dsp.exec_cmd("hyprpicker -af rgb"))
 hl.bind("Print", hl.dsp.exec_cmd("hyprshot -m region --clipboard-only --freeze"))
 hl.bind("SHIFT + Print", hl.dsp.exec_cmd("hyprshot -m region -o ~/Imagens/screenshots"))
-hl.bind(mainMod .. " + I", hl.dsp.exec_cmd("python ~/Documentos/demo.py"))
+hl.bind(mainMod .. " + I", hl.dsp.exec_cmd("python ~/dotfiles/demo.py"))
 
 -- Windows
 hl.bind(mainMod .. " + J", hl.dsp.layout("togglesplit"))    -- dwindle only

@@ -21,5 +21,3 @@ numero=$(echo "$opcoes" | grep -F "$escolha" | sed 's/^  \([0-9]*\).*/\1/')
 # Executa o script original com o número escolhido
 echo "$numero" | bash "$THEMER_SCRIPT"
 
-# Notificação
-notify-send "Tema Aplicado" "O tema $escolha foi aplicado!" 

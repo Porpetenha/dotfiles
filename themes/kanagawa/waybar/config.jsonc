@@ -120,10 +120,10 @@
     },
 
     "memory": {
-    "interval": 5,
-    "format": "[ {}% {used:0.1f}G/{total:0.1f}G  ]",
-    "tooltip": false,
-    "on-click": "~/.config/eww/scripts/toggle_waybar.sh memory"
+        "interval": 5,
+        "format": "[ {}% {used:0.1f}G/{total:0.1f}G  ]",
+        "tooltip": false,
+        "on-click": "~/.config/eww/scripts/toggle_waybar.sh memory"
     },
 
     "cpu": {

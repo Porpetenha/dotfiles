@@ -47,6 +47,26 @@ window#waybar.hidden {
     transition: box-shadow 0.3s ease;
 }
 
+#memory {
+    background-color: @background;
+    color: @green;
+    padding: 0 6px;
+    border: 2px solid @green;
+    border-radius: 10px;
+    margin-right: 10px;
+    transition: box-shadow 0.3s ease;
+}
+
+#cpu {
+    background-color: @background;
+    color: @red;
+    padding: 0 6px;
+    border: 2px solid @red;
+    border-radius: 10px;
+    margin-right: 10px;
+    transition: box-shadow 0.3s ease;
+}
+
 #workspaces {
     background-color: @background;
     padding: 0 6px;

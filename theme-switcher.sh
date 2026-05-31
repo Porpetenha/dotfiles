@@ -62,7 +62,54 @@ declare -A ROOT_TARGETS=(
 #  FUNÇÕES DO SCRIPT
 #  (Você só precisa editar a 'run_theme_commands' abaixo)
 # =============================================================================
+set_wallpaper() {
+    local img_path=$1
+    local hypr_conf="$HOME/dotfiles/hypr/hyprpaper.conf"
+    sed -i "s|^preload = .*|preload = $img_path|" "$hypr_conf"
+    sed -i "s|path = .*|path = $img_path|" "$hypr_conf"
+}
 
+set_obsidian_theme() {
+    local theme_name=$1
+    find "$HOME" -type f -path "*/.obsidian/appearance.json" 2>/dev/null \
+        | while read -r f; do
+            sed -i "s/\(\"cssTheme\": \"\)[^\"]*/\1$theme_name/" "$f"
+            echo "    - Atualizado: $f"
+        done
+}
+
+set_vscode_theme() {
+    local theme_name=$1
+    sed -i "s/\"workbench.colorTheme\":.*/\"workbench.colorTheme\": \"$theme_name\",/" \
+        "$HOME/.config/Code/User/settings.json"
+}
+
+set_firefox_bg() {
+    local ff_bg=$1
+    local ff_css
+    ff_css=$(find "$HOME/.mozilla/firefox" -name "userContent.css" 2>/dev/null | head -1)
+    
+    if [ -z "$ff_css" ]; then
+        echo "    - [!] userContent.css não encontrado."
+        return
+    fi
+    sed -i "s/--bg: #[0-9A-Fa-f]\{6\};/--bg: $ff_bg;/g" "$ff_css"
+    echo "    - Atualizado: $ff_css"
+}
+
+set_gtk_theme() {
+    local gtk_theme=$1
+    local cursor_theme=$2
+    local papirus_color=$3
+    local cursor_size=$4
+    local icon_theme="${5:-Papirus-Dark}"  # Papirus-Dark como padrão
+
+    gsettings set org.gnome.desktop.interface gtk-theme "$gtk_theme"
+    gsettings set org.gnome.desktop.interface cursor-theme "$cursor_theme"
+    gsettings set org.gnome.desktop.interface icon-theme "$icon_theme"
+    nohup papirus-folders -C "$papirus_color" --theme "$icon_theme" >/dev/null 2>&1 &
+    hyprctl setcursor "$cursor_theme" "$cursor_size"
+}
 #
 # (NOVO) ADICIONE SEUS COMANDOS ESPECÍFICOS AQUI
 #
@@ -70,6 +117,7 @@ declare -A ROOT_TARGETS=(
 #
 run_theme_commands() {
     local theme_folder_name=$1
+    local selected_display_name=$2
     echo "Executando comandos específicos do tema..."
 
     # Define o caminho do arquivo de configuração do hyprpaper
@@ -96,93 +144,54 @@ run_theme_commands() {
 
         "tokyo-night-storm")
             echo "  > Executando 'sed' para VS Code ($selected_display_name)..."
-            sed -i 's/"workbench.colorTheme":.*/"workbench.colorTheme": "Tokyo Night Storm",/' "$HOME/.config/Code/User/settings.json"
-
-            echo "  > Aplicando wallpaper do $selected_display_name..."
-            local img_tokyo="$HOME/dotfiles/themes/tokyo-night-storm/tokyo-kanagawa.jpg"
-            sed -i "s|^preload = .*|preload = $img_tokyo|" "$hypr_conf"
-            sed -i "s|path = .*|path = $img_tokyo|" "$hypr_conf"
-
-            echo "  > Executando 'sed' para o Obsidian ($selected_display_name)..."
-            find "$HOME" -type f -path "*/.obsidian/appearance.json" 2>/dev/null | while read -r obsidian_config; do
-                sed -i 's/\("cssTheme": "\)[^"]*/\1Tokyo Night/' "$obsidian_config"
-                echo "    - Atualizado: $obsidian_config"
-            done 
-
-            echo " > Alterando o tema do sistema..."
-            gsettings set org.gnome.desktop.interface gtk-theme "Tokyonight-Dark-Storm"
-            gsettings set org.gnome.desktop.interface cursor-theme "Moga-Neon-Blue"
-            gsettings set org.gnome.desktop.interface icon-theme "Papirus-Dark"
-            nohup papirus-folders -C red --theme Papirus-Dark >/dev/null 2>&1 &
-            hyprctl setcursor Moga-Neon-Blue 20
-            ;;
-        
-        "gruvbox-dark")
-            echo "  > Executando 'sed' para VS Code ($selected_display_name)..."
-            sed -i 's/"workbench.colorTheme":.*/"workbench.colorTheme": "Gruvbox Dark Medium",/' "$HOME/.config/Code/User/settings.json"
+            set_vscode_theme "Tokyo Night Storm"
             
             echo "  > Aplicando wallpaper do $selected_display_name..."
-            local img_gruv="$HOME/dotfiles/themes/gruvbox-dark/gruvbox-astro.jpg"
-            sed -i "s|^preload = .*|preload = $img_gruv|" "$hypr_conf"
-            sed -i "s|path = .*|path = $img_gruv|" "$hypr_conf"
+            set_wallpaper "$THEMES_DIR/tokyo-night-storm/tokyo-kanagawa.jpg"
 
             echo "  > Executando 'sed' para o Obsidian ($selected_display_name)..."
-            find "$HOME" -type f -path "*/.obsidian/appearance.json" 2>/dev/null | while read -r obsidian_config; do
-                sed -i 's/\("cssTheme": "\)[^"]*/\1Obsidian gruvbox/' "$obsidian_config"
-                echo "    - Atualizado: $obsidian_config"
-            done
-            
-            echo " > Alterando o tema do sistema..."
-            gsettings set org.gnome.desktop.interface gtk-theme "Gruvbox-Dark-Medium"
-            gsettings set org.gnome.desktop.interface cursor-theme "Simp1e-Gruvbox-Dark"
-            gsettings set org.gnome.desktop.interface icon-theme "Papirus-Dark"
-            nohup papirus-folders -C brown --theme Papirus-Dark >/dev/null 2>&1 &
-            hyprctl setcursor Simp1e-Gruvbox-Dark 24
+            set_obsidian_theme "Tokyo Night"
 
             echo "  > Aplicando tema ($selected_display_name) ao Firefox..."
-            local ff_css="$HOME/.mozilla/firefox/dneohqj6.default-release/chrome/userContent.css"
-            local ff_bg="#282828" 
+            set_firefox_bg "#24283b"
+
+            echo " > Alterando o tema do sistema..."
+            set_gtk_theme "Tokyonight-Dark-Storm" "Moga-Candy-Macchiato" "red" 20
+            ;;
+        
+
+        "gruvbox-dark")
+            echo "  > Executando 'sed' para VS Code ($selected_display_name)..."
+            set_vscode_theme "Gruvbox Dark Medium"
             
-            if [ -f "$ff_css" ]; then
-                sed -i "s/--bg: #[0-9A-Fa-f]\{6\};/--bg: $ff_bg;/g" "$ff_css"
-                echo "    - Atualizado: $ff_css"
-            else
-                echo "    - [!] Erro: Arquivo userContent.css não encontrado."
-            fi
+            echo "  > Aplicando wallpaper do $selected_display_name..."
+            set_wallpaper "$THEMES_DIR/gruvbox-dark/gruvbox-astro.jpg"
+
+            echo "  > Executando 'sed' para o Obsidian ($selected_display_name)..."
+            set_obsidian_theme "Obsidian gruvbox"
+
+            echo "  > Aplicando tema ($selected_display_name) ao Firefox..."
+            set_firefox_bg "#282828"
+
+            echo " > Alterando o tema do sistema..."
+            set_gtk_theme "Gruvbox-Dark-Medium" "Moga-Candy-Grey" "brown" 24
             ;;
 
         "kanagawa")
             echo "  > Executando 'sed' para VS Code ($selected_display_name)..."
-            sed -i 's/"workbench.colorTheme":.*/"workbench.colorTheme": "Kanagawa",/' "$HOME/.config/Code/User/settings.json"
-            
+            set_vscode_theme "Kanagawa"
+
             echo "  > Aplicando wallpaper do $selected_display_name..."
-            local img_gruv="$HOME/dotfiles/themes/kanagawa/kanagawa.jpg"
-            sed -i "s|^preload = .*|preload = $img_gruv|" "$hypr_conf"
-            sed -i "s|path = .*|path = $img_gruv|" "$hypr_conf"
-
+            set_wallpaper "$THEMES_DIR/kanagawa/kanagawa.jpg"
+            
             echo "  > Executando 'sed' para o Obsidian ($selected_display_name)..."
-            find "$HOME" -type f -path "*/.obsidian/appearance.json" 2>/dev/null | while read -r obsidian_config; do
-                sed -i 's/\("cssTheme": "\)[^"]*/\1Kanagawa/' "$obsidian_config"
-                echo "    - Atualizado: $obsidian_config"
-            done
+            set_obsidian_theme "Kanagawa"
             
-            echo " > Alterando o tema do sistema..."
-            gsettings set org.gnome.desktop.interface gtk-theme "Kanagawa"
-            gsettings set org.gnome.desktop.interface cursor-theme "Moga-Sandy"
-            gsettings set org.gnome.desktop.interface icon-theme "Papirus-Dark"
-            nohup papirus-folders -C paleorange --theme Papirus-Dark >/dev/null 2>&1 &
-            hyprctl setcursor Moga-Sandy 20
-
             echo "  > Aplicando tema ($selected_display_name) ao Firefox..."
-            local ff_css="$HOME/.mozilla/firefox/dneohqj6.default-release/chrome/userContent.css"
-            local ff_bg="#1C1C22" 
-            
-            if [ -f "$ff_css" ]; then
-                sed -i "s/--bg: #[0-9A-Fa-f]\{6\};/--bg: $ff_bg;/g" "$ff_css"
-                echo "    - Atualizado: $ff_css"
-            else
-                echo "    - [!] Erro: Arquivo userContent.css não encontrado."
-            fi
+            set_firefox_bg "#1C1C22"
+                        
+            echo " > Alterando o tema do sistema..."
+            set_gtk_theme "Kanagawa" "Moga-Sandy" "paleorange" 20
             ;;
         *)
 
@@ -191,6 +200,22 @@ run_theme_commands() {
     esac
 }
 
+send_notification() {
+    local theme_folder_name=$1
+    local theme_display_name=$2
+    local icon_path="$THEMES_DIR/$theme_folder_name/icon.svg"
+
+    # Fallback caso o tema não tenha icon.svg
+    if [ ! -f "$icon_path" ]; then
+        icon_path="preferences-desktop-theme"  # ícone genérico do sistema
+    fi
+
+    notify-send \
+        --icon="$icon_path" \
+        --urgency=normal \
+        "Tema Alterado" \
+        "O tema foi alterado para: $theme_display_name"
+}
 
 # Função para aplicar os links do tema
 apply_theme_links() {
@@ -243,7 +268,9 @@ apply_theme() {
     apply_theme_links "$theme_folder_name"
     
     # 2. Executa os comandos específicos (NOVO)
-    run_theme_commands "$theme_folder_name"
+    run_theme_commands "$theme_folder_name" "$selected_display_name"
+
+    send_notification "$theme_folder_name" "$theme_display_name"
 }
 
 # Função para recarregar serviços

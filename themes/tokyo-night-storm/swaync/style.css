@@ -1,19 +1,15 @@
-@import "/home/porpetenha/dotfiles/themes/tokyo-night-storm/swaync/tokyo.css";
-
 @define-color text            #c0caf5;
-@define-color background1     #414868;
-@define-color background-alt  #214556;
-@define-color selected        @color6;
+@define-color background1     #24283b;
+@define-color background-alt  #414868;
+@define-color selected        #c0caf5;
 @define-color hover           alpha(@selected, .4);
 @define-color urgent          @color2;
 @define-color border          #c0caf5;
 
-
 :root{
-
   --radius: 5px;
   --margin: 1px 7px 0px 0px;
-  --border: 2px solid #c0caf5;
+  --border: 2px solid @border;
 }
 
 * {
@@ -21,7 +17,7 @@
 
   all: unset;
   font-size: 14px;
-  font-family: "JetBrains Mono Nerd Font 10";
+  font-family: JetBrainsMono Nerd Font Propo;
   transition: 200ms;
 
 }

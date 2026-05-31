@@ -14,49 +14,32 @@
     ],
 
     "modules-center": [ 
-        "group/center1"
+        "group/center"
     ],
 
     "modules-right": [
-        "group/right1"
+        "group/right"
     ],
 
 
 //Groups
 
-    "group/center1": {
+    "group/center": {
         "orientation": "horizontal",
         "modules": [
             "clock"
         ]
     },
 
-    "group/right1": {
+    "group/right": {
         "orientation": "horizontal",
         "modules": [
+            //"memory",
+            //"cpu",
             "tray",
             //"custom/music",
-            //"custom/notify",
+            "custom/notify",
             "custom/os_button"
-        ]
-    },
-
-    "group/center2": {
-        "orientation": "horizontal",
-        "modules": [
-            "clock"
-        ]
-    },
-
-    "group/right2": {
-        "orientation": "horizontal",
-        "modules": [
-            //"custom/brightness",
-            "custom/volume",
-            "tray",
-            //"custom/music",
-            //"custom/notify",
-            "custom/os_button2"
         ]
     },
 
@@ -131,13 +114,19 @@
         "on-scroll-down": "pactl set-sink-volume @DEFAULT_SINK@ -5%"
     },
 
-    "custom/os_button2": {
-        "format":"󰣇",
-        "on-click-right": "rofi -show drun",
+    "memory": {
+        "interval": 5,
+        "format": "{}% {used:0.1f}G/{total:0.1f}G ",
         "tooltip": false,
-        "tooltip-format": "btw 😎"
-
+        "on-click": "~/.config/eww/scripts/toggle_waybar.sh memory"
     },
+
+    "cpu": {
+        "interval": 5,
+        "format": "{}% - {avg_frequency} GHz ",
+        "tooltip": false,
+        "on-click": "~/.config/eww/scripts/toggle_waybar.sh cpu"
+    } 
 
 }
 

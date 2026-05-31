@@ -18,7 +18,9 @@
     ],
 
     "modules-right": [
-        //"tray",
+        //"memory",
+        //"cpu",
+        "tray",
         "custom/notify",
         "custom/os_button"
     ],
@@ -65,7 +67,21 @@
         "on-click": "exec swaync-client -t -sw",
         "tooltip": false,
         "tooltip-format": "Notificações"
-    }
+    },
+
+    "memory": {
+        "interval": 5,
+        "format": "{}% {used:0.1f}G/{total:0.1f}G ",
+        "tooltip": false,
+        "on-click": "~/.config/eww/scripts/toggle_waybar.sh memory"
+    },
+
+    "cpu": {
+        "interval": 5,
+        "format": "{}% - {avg_frequency} GHz ",
+        "tooltip": false,
+        "on-click": "~/.config/eww/scripts/toggle_waybar.sh cpu"
+    } 
 
 }
 

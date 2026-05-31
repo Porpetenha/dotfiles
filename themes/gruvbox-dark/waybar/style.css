@@ -15,14 +15,11 @@ window#waybar.hidden {
     opacity: 0.2;
 }
 
-#custom-os_button,
-#custom-os_button2 {
+#custom-os_button{
     color: @blue;
     padding: 0 6px;
     transition: all 0.2s;
 }
-
-
 
 #custom-notify {
     color: @yellow;
@@ -40,6 +37,18 @@ window#waybar.hidden {
     color: @green;
     padding: 0 6px;
     transition: all 0.2s;
+}
+
+#memory {
+    color: @green;
+    transition: all 0.2s;
+    padding: 0 10px;
+}
+
+#cpu {
+    color: @red;
+    transition: all 0.2s;
+    padding: 0 6px;
 }
 
 #workspaces {
@@ -163,9 +172,3 @@ tooltip {
 @define-color fg1 #ebdbb2;
 @define-color fg0 #fbf1c7;
 
-#custom-volume {
-    padding: 0 10px;
-    color: @orange;
-    background-color: #282828;
-    margin: 5px;
-}

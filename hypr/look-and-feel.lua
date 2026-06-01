@@ -1,1 +1,1 @@
-../themes/kanagawa/hypr/look-and-feel.lua
+../themes/tokyo-night-storm/hypr/look-and-feel.lua

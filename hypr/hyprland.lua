@@ -104,7 +104,6 @@ hl.env("QT_IM_MODULE", "cedilla")
 -----------------------
 
 local look_and_fell = require("look-and-feel")
-local look_and_fell = require("themes")
 ---------------
 ---- INPUT ----
 ---------------
@@ -428,3 +427,20 @@ hl.window_rule({
 
     float = true,
 })
+
+-- Desativa barra em todas as janelas
+hl.window_rule({
+    name  = "hyprbars-desativar-geral",
+    match = { class = ".*" },
+    ["hyprbars:no_bar"] = true,
+})
+
+-- Reativa apenas nas flutuantes
+hl.window_rule({
+    name  = "hyprbars-apenas-flutuantes",
+    match = { float = true },
+    ["hyprbars:no_bar"] = false,
+})
+
+
+

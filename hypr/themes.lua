@@ -1,1 +1,1 @@
-../themes/kanagawa/hypr/themes.lua
+../themes/tokyo-night-storm/hypr/themes.lua

@@ -144,3 +144,44 @@ hl.layer_rule({
   match     = { namespace = "swaync-control-center" },
   animation = "slide" 
 })
+
+-- Variáveis de Ambiente (Cursores e Temas)
+hl.env("HYPRCURSOR_SIZE", "20")
+hl.env("HYPRCURSOR_THEME", "Moga-Candy-Macchiato")
+hl.env("XCURSOR_SIZE", "20")
+hl.env("XCURSOR_THEME", "Moga-Candy-Macchiato")
+hl.env("GTK_THEME", "Tokyonight-Dark-Storm")
+
+-- Execução na Inicialização (Autostart)
+hl.on("hyprland.start", function ()
+    hl.exec_cmd("hyprctl setcursor Moga-Candy-Macchiato 20")
+end)
+
+hl.config({
+    plugin = {
+        hyprbars = {
+            bar_height = 30,
+            bar_color = "rgb(16161e)",
+            bar_blur = true,
+            bar_title_enabled = false,
+            bar_precedence_over_border = true,
+            on_double_click = "hyprctl dispatch fullscreen 1",
+        },
+    },
+})
+
+hl.plugin.hyprbars.add_button({
+    bg_color = "rgb(f7768e)",
+    fg_color = "rgb(16161e)",
+    size = 20,
+    icon = "󱎘",
+    action = "killactive"
+})
+
+hl.plugin.hyprbars.add_button({
+    bg_color = "rgb(e0af68)",
+    fg_color = "rgb(16161e)",
+    size = 20,
+    icon = "",
+    action = "togglefloating",
+})

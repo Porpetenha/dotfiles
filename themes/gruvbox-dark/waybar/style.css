@@ -51,6 +51,10 @@ window#waybar.hidden {
     padding: 0 6px;
 }
 
+#tray {
+    transition: all 0.2s;
+    padding: 0 6px;
+}
 #workspaces {
 }
 

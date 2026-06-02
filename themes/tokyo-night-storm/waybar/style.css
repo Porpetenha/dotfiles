@@ -67,6 +67,16 @@ window#waybar.hidden {
     transition: box-shadow 0.3s ease;
 }
 
+#tray {
+    background-color: @background;
+    color: @orange;
+    padding: 0 6px;
+    border: 2px solid @orange;
+    border-radius: 10px;
+    margin-right: 10px;
+    transition: box-shadow 0.3s ease;
+}
+
 #workspaces {
     background-color: @background;
     padding: 0 6px;

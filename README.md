@@ -80,6 +80,7 @@ GTK themes author: [Fausto-Korpsvart](https://github.com/Fausto-Korpsvart)
 ![](assets/tokyo-night/tokyo_night_powermenu_swaync.png)
 ![](assets/tokyo-night/tokyo_night_wallpaper_notify.png)
 ![](assets/tokyo-night/tokyo_night_overview.png)
+![](assets/tokyo-night/gif.gif)
 
 ### Gruvbox
 
@@ -88,6 +89,7 @@ GTK themes author: [Fausto-Korpsvart](https://github.com/Fausto-Korpsvart)
 ![](assets/gruvbox/gruvbox_powermenu_swaync.png)
 ![](assets/gruvbox/gruvbox_wallpaper_notify.png)
 ![](assets/gruvbox/gruvbox_overview.png)
+![](assets/gruvbox/gif.gif)
 
 ### Kanagawa
 
@@ -96,5 +98,5 @@ GTK themes author: [Fausto-Korpsvart](https://github.com/Fausto-Korpsvart)
 ![](assets/kanagawa/kanagawa_powermenu_swaync.png)
 ![](assets/kanagawa/kanagawa_wallpaper_notify.png)
 ![](assets/kanagawa/kanagawa_overview.png)
-
+![](assets/kanagawa/gif.gif)
 ---

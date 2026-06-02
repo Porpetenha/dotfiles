@@ -52,8 +52,8 @@ hl.on("hyprland.start", function ()
   --hl.exec_cmd("gsettings set org.gnome.desktop.interface color-scheme "prefer-dark")
   hl.exec_cmd("dbus-update-activation-environment --all")
   hl.exec_cmd("gnome-keyring-daemon --start --components=secrets")
+  hl.exec_cmd("hyprpm reload -n")
 end)
-
 
 -------------------------------
 ---- ENVIRONMENT VARIABLES ----
@@ -97,7 +97,6 @@ hl.env("QT_IM_MODULE", "cedilla")
 -- hl.permission("/usr/(bin|local/bin)/grim", "screencopy", "allow")
 -- hl.permission("/usr/(lib|libexec|lib64)/xdg-desktop-portal-hyprland", "screencopy", "allow")
 -- hl.permission("/usr/(bin|local/bin)/hyprpm", "plugin", "allow")
-
 
 -----------------------
 ---- LOOK AND FEEL ----
@@ -424,23 +423,30 @@ hl.window_rule({
 hl.window_rule({
     name  = "desktop-editors-float",
     match = { class = "DesktopEditors" },
-
+    center = true,
     float = true,
 })
 
--- Desativa barra em todas as janelas
 hl.window_rule({
-    name  = "hyprbars-desativar-geral",
-    match = { class = ".*" },
+    match = { float = false },
     ["hyprbars:no_bar"] = true,
 })
 
--- Reativa apenas nas flutuantes
 hl.window_rule({
-    name  = "hyprbars-apenas-flutuantes",
     match = { float = true },
     ["hyprbars:no_bar"] = false,
 })
 
+-- confine everything
+hl.window_rule({  
+    match = { class = ".*" },  
+    ["confined-floats:confine"] = 30
+})
 
-
+hl.window_rule({
+    name  = "xdg-portal-float",
+    match = { class = "xdg-desktop-portal-gtk" },
+    float  = true,
+    center = true,
+    size   = {800, 600},
+})

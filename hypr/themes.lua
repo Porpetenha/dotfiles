@@ -1,1 +1,0 @@
-../themes/tokyo-night-storm/hypr/themes.lua

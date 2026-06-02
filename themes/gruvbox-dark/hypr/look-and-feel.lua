@@ -175,7 +175,7 @@ hl.plugin.hyprbars.add_button({
     fg_color = "rgb(c8c093)",
     size = 20,
     icon = "󱎘",
-    action = "killactive"
+    action = "(close window)"
 })
 
 hl.plugin.hyprbars.add_button({
@@ -183,5 +183,5 @@ hl.plugin.hyprbars.add_button({
     fg_color = "rgb(1f1f28)",
     size = 20,
     icon = "",
-    action = "togglefloating",
+    action = "(tilling_",
 })

@@ -170,18 +170,18 @@ hl.config({
     },
 })
 
-hl.plugin.hyprbars.add_button({
-    bg_color = "rgb(c34043)",
-    fg_color = "rgb(c8c093)",
-    size = 20,
-    icon = "󱎘",
-    action = "killactive"
-})
+-- hl.plugin.hyprbars.add_button({
+--     bg_color = "rgb(c34043)",
+--     fg_color = "rgb(c8c093)",
+--     size = 20,
+--     icon = "󱎘",
+--     action = "killactive"
+-- })
 
-hl.plugin.hyprbars.add_button({
-    bg_color = "rgb(e6c384)",
-    fg_color = "rgb(1f1f28)",
-    size = 20,
-    icon = "",
-    action = "togglefloating",
-})
+-- hl.plugin.hyprbars.add_button({
+--     bg_color = "rgb(e6c384)",
+--     fg_color = "rgb(1f1f28)",
+--     size = 20,
+--     icon = "",
+--     action = "togglefloating",
+-- })

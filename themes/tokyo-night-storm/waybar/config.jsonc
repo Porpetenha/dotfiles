@@ -19,7 +19,7 @@
 
     "modules-right": [
         //"memory",
-        "cpu",
+        //"cpu",
         "tray",
         "custom/notify",
         "custom/os_button"

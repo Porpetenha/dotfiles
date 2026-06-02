@@ -38,7 +38,7 @@ declare -A THEMES=(
 # 3. DEFINIÇÃO DOS ALVOS (APLICATIVOS DENTRO DE DOTFILES)
 declare -A APP_TARGETS=(
     ["kitty"]="colors.conf"
-    ["hypr"]="look-and-feel.lua hyprlock.conf themes.lua"
+    ["hypr"]="look-and-feel.lua hyprlock.conf"
     ["waybar"]="style.css config.jsonc"
     ["rofi"]="colors.rasi"
     ["swaync"]="style.css config.json"

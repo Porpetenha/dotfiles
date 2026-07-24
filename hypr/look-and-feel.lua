@@ -1,1 +1,1 @@
-../themes/kanagawa/hypr/look-and-feel.lua
+../themes/gruvbox-dark/hypr/look-and-feel.lua

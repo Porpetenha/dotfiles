@@ -16,7 +16,7 @@
 
 -- See https://wiki.hypr.land/Configuring/Basics/Monitors/
 hl.monitor({
-    output   = "HDMI-A-1",
+    output   = "HDMI-A-2",
     mode     = "1920x1080@74.97",
     position = "0x0",
     scale    = "1",
@@ -358,27 +358,48 @@ hl.window_rule({
 })
 
 -- Godot Engine
-hl.window_rule({
-    name  = "godot-principal",
-    match = { 
-        initial_class = "^(Godot)$",
-        initial_title = "^(Godot)$"
-    },
-
-    tile = true,
-})
 
 hl.window_rule({
-    name  = "godot-debug",
+    name  = "godot-project",
     match = { 
-        class         = "^(Godot)$",
-        initial_class = "^(Godot)$",
-        title         = "^((.*)(DEBUG))",
-        initial_title = "^(.*)(DEBUG)(.*)$"
+        title = "Confirme, Por Favor..."
     },
-
-    float = true,
+    center = true,
+    size   = {244,89},
 })
+
+-- hl.window_rule({
+--     name  = "godot-project",
+--     match = { 
+--         title = "Godot Engine - Gerenciador de Projetos"
+--     },
+
+--     float = true,
+-- })
+
+
+-- hl.window_rule({
+--     name  = "godot-principal",
+--     match = { 
+--         initial_class = "^(Godot)$",
+--         initial_title = "^(Godot)$"
+--     },
+
+--     tile = true,
+-- })
+
+
+-- hl.window_rule({
+--     name  = "godot-debug",
+--     match = { 
+--         class         = "^(Godot)$",
+--         initial_class = "^(Godot)$",
+--         title         = "^((.*)(DEBUG))",
+--         initial_title = "^(.*)(DEBUG)(.*)$"
+--     },
+
+--     float = true,
+-- })
 
 -- Opacidade (YouTube)
 hl.window_rule({
